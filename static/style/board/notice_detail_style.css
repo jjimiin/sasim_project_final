@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+}
+
+
+/*공지사항 타이틀*/
+
+.conA {
+    margin-top: 160px;
+}
+
+.Ntitle {
+    width: 70%;
+    height: 90px;
+    background-color: #EFF6EC;
+    margin: 20px auto;
+}
+
+.Ntitle .one{
+    color:#49392A;
+    font-size:1.5rem;
+    padding:15px 40px;
+}
+
+.Ntitle .two{
+    color:#49392A;
+    font-weight: bold;
+    float:right;
+    font-size:14px;
+    padding-right:12px;
+}
+
+.Ntitle .two > a {
+    font-weight: normal;
+    text-decoration: none;
+    color: #49392A;
+}
+.Ntitle .two > a:hover {
+    text-decoration: underline;
+}
+
+/*게시판 상세*/
+.post {
+    margin: 0px auto;
+    margin-top:50px;
+    justify-content: center;
+    width: 70%;
+}
+
+.post .Ptitle {
+    width: 80%;
+    max-width: 900px;
+
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-left: 10%;
+
+    font-weight:bold;
+    font-size:20px;
+    color:#6C4E3D;
+    background-color: #F7F3F0;
+    border-top:2px solid #5B4C48;
+}
+
+.post .Pdate {
+    width: 80%;
+    max-width: 900px;
+
+    margin: 0 auto;
+    padding-bottom: 5px;
+    padding-right: 10%;
+
+    text-align: right;
+    font-weight:bold;
+    font-size: 13px;
+    color: #B3A7A1;
+    background-color: #F7F3F0;
+    border-bottom:2px solid #B5A094;
+}
+
+.post .Pcontent {
+    width: 80%;
+    max-width: 900px;
+
+    margin: 0 auto;
+    padding: 45px 0px;
+    padding-left: 10%;
+
+    border-bottom: 1px solid #B5A094;
+    margin-bottom: 70px;
+    color: #665847;
+}
+
+
+/*button*/
+.List_btn {
+    margin-bottom: 120px;
+    margin-top: -25px;
+}
+
+#nt_d_btn {
+    text-decoration: none;
+}
+
+.Button {
+    margin-top: 20px;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    padding: 10px 12px;
+    background-color: #5B7454;
+    border: 2px solid #5B7454;
+    border-radius: 5%;
+    margin-left:75%;
+    cursor: pointer;
+}
+ .Button:hover {
+    text-decoration: underline;
+    background-color: #718C69;
+}
+ .Button:active {
+    border: 2px solid #EDF7EB;
+    background-color: #97BF8F;
+    color: #EDF7EB;
+}

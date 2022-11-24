@@ -1,0 +1,335 @@
+@charset "UTF-8";
+
+/* 공통적용 */
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+}
+
+.conA {
+    margin: 0 50px;
+    margin-top: 180px;
+}
+/**/
+
+
+/* 장바구니 문구 */
+h1 {
+    text-align: center;
+    color: #95B36B;
+}
+/* */
+
+
+/* 장바구니 안내 박스 */
+.text_box {
+    margin: 20px auto;
+    margin-top: 50px;
+    padding: 15px 10px;
+
+    border: 2px solid #B3998F;
+    border-radius: 7px;
+    max-width: 700px;
+
+    color: #594943;
+    background-color: #F7F2F0;
+}
+
+.text_box li {
+    margin: 5px 0;
+}
+/* */
+
+
+/* 상품 삭제 버튼 */
+.delete_item {
+    margin: 50px auto;
+    margin-bottom: 10px;
+
+    display: flex;
+    justify-content: right;
+    max-width: 970px;
+}
+
+.delete_item input {
+    padding: 10px 15px;
+    margin-left: 7px;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+}
+
+.delete_item .delete_item_btn1 {
+    border: 2px solid #957C6E;
+    background-color: #8C6C54;
+    color: #F7F3F0;
+}
+.delete_item .delete_item_btn1:hover {
+    background-color: #947E6F;
+    text-decoration: underline;
+}
+
+.delete_item .delete_item_btn2 {
+    border: 2px solid #B3998F;
+    background-color: #F2EDEB;
+    color: #806259;
+}
+.delete_item .delete_item_btn2:hover {
+    background-color: #E6D5CF;
+    text-decoration: underline;
+}
+/* */
+
+
+/* 장바구니 상품 목록 */
+.cart_item_list {
+    border-top: 2px solid #7D6151;
+    text-align: center;
+
+    margin: 10px auto;
+
+    justify-content: left;
+    max-width: 1000px;
+}
+
+.cart_item {
+    border-bottom: 2px solid #7D6151;
+	line-height: 100px;
+
+    padding: 20px 20px;
+    padding-left: 50px;
+
+    display: flex;
+}
+.cart_item:hover {
+    background-color: #F7F3F0;
+}
+
+.cart_item_main {
+    display: flex;
+    flex-flow: row wrap;
+    margin-right: 50px;
+
+    width: 300px;
+}
+
+.cart_item_detail {
+    width: 500px;
+
+	line-height: 140px;
+    color: #544537;
+
+    display: flex;
+    text-align: right;
+}
+
+.cart_item_detail>p {
+    display: block;
+
+    text-align: right;
+}
+
+.plName {
+    width: 90px;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.price {
+    font-weight: none;
+    font-size: 13px;
+    color: #99857A;
+    line-height: 12px;
+}
+
+.amount {
+    width: 100%;
+}
+
+.p_a {
+    width: 100%;
+}
+
+.cart_item_main>a {
+    margin-left: 30px;
+    justify-content: left;
+	line-height: 25px;
+
+	font-weight: bold;
+    text-decoration: none;
+    color: #544537;
+}
+.cart_item_main>a:hover {
+    text-decoration: underline;
+}
+
+.cart_item_main>a>div {
+    width: 100px;
+    height: 100px;
+}
+
+.cart_item_main>a>div>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.p_a, .amount {
+	font-weight: bold;
+    color: #736150;
+}
+
+/* */
+
+
+/* 최종 가격 박스 */
+.cart_price {
+    width: 80%;
+    max-width: 800px;
+
+    margin: 20px auto;
+    margin-bottom: 40px;
+}
+
+.cart_price_box {
+    text-align: right;
+}
+
+.cart_price_label_1 {
+    margin-bottom: 5px;
+
+    font-size: 15px;
+    font-weight: bold;
+    color: #664833;
+}
+
+.cart_price_label_2 {
+    font-size: 14px;
+    color: #805A40;
+}
+
+.total_price {
+    margin: 10px auto;
+
+    justify-content: left;
+    max-width: 1000px;
+}
+
+.total_price_box {
+    border: 3px solid #C1CCB8;
+    border-radius: 5px;
+    background-color: #F5F7F2;
+    text-align: center;
+
+    margin-top: 50px;
+    padding: 30px 45px;
+}
+
+.label {
+    display: flex;
+    justify-content: right;
+
+    margin-bottom: 15px;
+
+    font-size: 17px;
+    font-weight: bold;
+    color: #596647;
+}
+
+.content {
+    display: flex;
+    justify-content: right;
+
+    padding: 0 25px;
+    color: #839963;
+}
+
+.label1 {
+    width: 100%;
+}
+.label2 {
+    width: 100%;
+}
+.label3 {
+    width: 100%;
+}
+
+.content1 {
+    width: 100%;
+}
+.content2 {
+    width: 20%;
+}
+.content3 {
+    width: 100%;
+}
+.content4 {
+    width: 20%;
+}
+.content5 {
+    width: 100%;
+}
+/* */
+
+
+/* */
+.buy_item {
+    margin: 10px auto;
+    margin-bottom: 70px;
+
+    display: flex;
+    justify-content: right;
+    max-width: 970px;
+}
+
+.buy_item input {
+    padding: 10px 15px;
+    margin-left: 7px;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+}
+
+.buy_item .buy_item_btn1 {
+    border: 2px solid #879976;
+    background-color: #F4F7F0;
+    color: #6C8059;
+}
+.buy_item .buy_item_btn1:hover {
+    background-color: #DFE6D5;
+    text-decoration: underline;
+}
+
+.buy_item .buy_item_btn2 {
+    border: 2px solid #838F69;
+    background-color: #79995C;
+    color: #F4F7F0;
+}
+.buy_item .buy_item_btn2:hover {
+    background-color: #97AB84;
+    text-decoration: underline;
+}
+/* */
+
+.input_chkAll {
+    margin: 80px auto;
+    margin-bottom: -82px;
+    padding: 0 10px;
+
+    max-width: 930px;
+}
+
+.check_all_txt {
+    padding-left: 5px;
+
+    font-size: 18px;
+    font-weight: bold;
+    color: #4D3A2E;
+}

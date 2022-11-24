@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 - 사이트 소개</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/siteIntroduction/introduction_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+
+
+{% block content %}
+
+    <div class="conA">
+        <!--  배너  -->
+        <section class="introA">
+            <div class="containerA">
+                <p><img src="{% static 'img/introduction/키움_텍스트.png' %}" alt="키움" width=25%></p>
+                <p class="contentA">식물의 가치를 알고 소중함을 알리는 식물 판매 사이트</p>
+            </div>
+        </section>
+        <!-- -->
+
+        <!--  내용  -->
+        <section class="introB">
+            <div class="containerB">
+                <p class="boxB1">&nbsp;</p>
+                <p class="boxB2">&nbsp;</p>
+                <p class="titleB">키움</p>
+            </div>
+
+            <div class="B_1">
+                <div class="containerC">
+                    <img class="img1" src="{% static 'img/introduction/내용1.jpg' %}" alt="키움소개1">
+                    <img class="img2" src="{% static 'img/introduction/내용1_문구.png' %}" alt="키움소개문구1">
+                </div>
+
+                <div class="containerD">
+                    <img class="img3" src="{% static 'img/introduction/내용2.jpg' %}" alt="키움소개2">
+                    <img class="img4" src="{% static 'img/introduction/내용2_문구.png' %}" alt="키움소개문구2">
+                </div>
+            </div>
+
+        </section>
+        <!-- -->
+    </div>
+
+{% endblock %}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

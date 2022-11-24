@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 구매</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/shop/plant_buy_style.css' %}" type="text/css"/>
+
+    <!--   배송 정보 버튼   -->
+    <script>
+        function frm_info(which) {
+          if (which == 'old') {
+            document.frm.name.value = document.getElementById('name').innerHTML;
+            document.frm.tel1.value = document.getElementById('tel1').innerHTML;
+            document.frm.tel2.value = document.getElementById('tel2').innerHTML;
+            document.frm.tel3.value = document.getElementById('tel3').innerHTML;
+            document.frm.postcode.value = document.getElementById('postcode').innerHTML;
+            document.frm.address1.value = document.getElementById('address1').innerHTML;
+            document.frm.address2.value = document.getElementById('address2').innerHTML;
+          } else if (which == 'new') {
+            document.frm.name.value = "";
+            document.frm.tel1.value = "010";
+            document.frm.tel2.value = "";
+            document.frm.tel3.value = "";
+            document.frm.postcode.value = "";
+            document.frm.address1.value = "";
+            document.frm.address2.value = "";
+          }
+        }
+
+
+        //load함수를 이용하여 core스크립트의 로딩이 완료된 후, 우편번호 서비스를 실행합니다.
+        function sample6_execDaumPostcode() {
+            daum.postcode.load(function(){
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+                        // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+                        var addr = ''; // 주소 변수
+                        var extraAddr = ''; // 참고항목 변수
+
+                        //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                        if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                            addr = data.roadAddress;
+                        } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                            addr = data.jibunAddress;
+                        }
+
+                        // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                        if(data.userSelectedType === 'R'){
+                            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                                extraAddr += data.bname;
+                            }
+                            // 건물명이 있고, 공동주택일 경우 추가한다.
+                            if(data.buildingName !== '' && data.apartment === 'Y'){
+                                extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                            }
+                            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                            if(extraAddr !== ''){
+                               extraAddr = ' (' + extraAddr + ')';
+                            }
+                            // 조합된 참고항목을 해당 필드에 넣는다 .
+                            document.getElementById("address2_a").value = extraAddr;
+
+                        } else {
+                            document.getElementById("address2_a").value = '';
+                        }
+
+                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                        document.getElementById('postcode_a').value = data.zonecode;
+                        document.getElementById("address1_a").value = addr;
+                        // 커서를 상세주소 필드로 이동한다.
+                        document.getElementById("address2_a").focus();
+                    }
+                }).open();
+            });
+        }
+    </script>
+</head>
+
+
+<body>
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+
+
+{% block content %}
+
+    <div class="conA">
+
+        <form class="orderForm" name="frm" method="POST" action="{% url 'plant_order' %}">
+            {% csrf_token %}
+            <!--   사용자한테는 안 보임 (프론트 작업x)     -->
+             <input type="hidden" name="buy_sort" value="{{ buy_sort }}">
+             <input type="hidden" name="order_total_price" value="{{ plant_buy_info_ship_total_price_x }}">
+            <!--    -->
+
+            <h2 class="h2_txt">주문서 작성</h2>
+
+            <h3 class="h3_txt1">주문 상품</h3>
+
+
+            <!--  구매 상품 목록  -->
+            <div class="buy_item_list">
+                {% for list in plant_buy_list %}
+
+                <!--  각 상품  -->
+                <div class="buy_item">
+                    <!--  프론트에선 안보임  -->
+                    <input type="hidden" name="order_plant_list" value="{{ list.0 }}">
+                    <input type="hidden" name="order_plant_amount" value="{{ list.4 }}">
+                    <input type="hidden" name="order_plant_price" value="{{ list.6 }}">
+                    <!-- -->
+
+                    <div class="buy_item_main">
+                        <!--  상품 / 페이지 이동 걸린 부분  -->
+                        <a href="{% url 'plant_detail' id=list.0 %}">
+                            <div>
+                                <img src="{% static list.1 %}" alt="이미지"> <!--  이미지  -->
+                            </div>
+                            <p class="plName">{{ list.2 }}</p> <!--  식물명  -->
+                            <p class="price">{{ list.3 }}원</p> <!--  단가  -->
+                        </a>
+                        <!-- -->
+                    </div>
+
+                    <div class="buy_item_detail">
+                        <p class="amount">{{ list.4 }}개</p> <!--  수량  -->
+                        <p class="p_a">{{ list.5 }}원</p> <!--  단가*수량 금액  -->
+                    </div>
+
+                </div>
+                <!-- -->
+
+                {% endfor %}
+            </div>
+            <!---->
+
+
+            <!--    가격 계산 (상품 총합 + 배송비 = 총 금액)    -->
+            <div class="total_price">
+                <div class="total_price_box">
+
+                    <div class="label">
+                        <div class="label1">상품 금액</div>
+                        <div class="label2">배송비</div>
+                        <div class="label3">총 주문 금액</div>
+                    </div>
+
+                    <div class="content">
+                        <div class="content1">{{ plant_buy_info_total_price }}</div> <!--  상품 총 금액  -->
+                        <div class="content2">+</div>
+                        <div class="content3">{{ plant_buy_info_ship }}</div> <!--  배송비  -->
+                        <div class="content4">=</div>
+                        <div class="content5">{{ plant_buy_info_ship_total_price }}원</div> <!--  총 주문 금액  -->
+                    </div>
+                </div>
+            </div>
+            <!---->
+
+
+            <!--  주문자 정보  -->
+            <h3 class="h3_txt1" id="h3_txt2">주문자 정보</h3>
+
+            <!--  주문자  -->
+            <div class="buyer_box">
+                <table class="tbl_buyer">
+                  <tr>
+                    <td class="td_l">이름</td>
+                    <td class="td_r"><span id="name">{{ account.2 }}</span></td>
+                  </tr>
+                  <tr>
+                    <td class="td_l">연락처</td>
+                    <td class="td_r"><span id="tel">{{ account.3 }}</span></td>
+                  </tr>
+                  <tr>
+                    <td class="td_l">이메일</td>
+                    <td class="td_r"><span id="email">{{ account.4 }}</span></td>
+                  </tr>
+                </table>
+            </div>
+            <!---->
+
+            <!--  사용자한테는 안 보임 (프론트 작업x)  -->
+            <span id="postcode" style="display: none;">{{ account.5 }}</span>
+            <span id="tel1" style="display: none;">{{ account.8 }}</span>
+            <span id="tel2" style="display: none;">{{ account.9 }}</span>
+            <span id="tel3" style="display: none;">{{ account.10 }}</span>
+            <span id="address1" style="display: none;">{{ account.6 }}</span>
+            <span id="address2" style="display: none;">{{ account.7 }}</span>
+            <!---->
+
+            <!-- 주문자 정보 끝 -->
+
+
+            <!--  배송 정보  -->
+            <h3 class="h3_txt1" id="h3_txt3">배송 정보</h3>
+
+
+            <!--  배송 정보 입력 부분  -->
+            <div class="ship_box">
+                <!--   배송 정보 버튼   -->
+                <div class="convenience_btn">
+                    <button type="button" id="btn_info_old" class="ship_content" onclick="frm_info('old')">주문자 정보와 동일</button>
+                    <button type="button" id="btn_info_new" class="ship_content" onclick="frm_info('new')">새로운 배송지</button>
+                </div>
+                <!--     -->
+
+                <!--  배송 정보 입력  -->
+                <div class="ship_input">
+                    {{ blank_error }}
+
+                    <table class="tbl_ship">
+                        <tr>
+                            <td class="ship_l">수령인</td>
+                            <td class="ship_r" colspan="2">
+                                <input class="name" name="name" type="text" placeholder="받으실 분" value="{{ account.2 }}" style="width:150px;" required>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ship_l">연락처</td>
+                            <td class="ship_r" colspan="2">
+                                <select id="phone_list" title="전화번호" name="tel1" class="phone_list">
+                                    <option value="010" {{ phone1_chk.0 }}>010</option>
+                                    <option value="02" {{ phone1_chk.1 }}>02</option>
+                                    <option value="031" {{ phone1_chk.2 }}>031</option>
+                                    <option value="033" {{ phone1_chk.3 }}>033</option>
+                                    <option value="041" {{ phone1_chk.4 }}>041</option>
+                                    <option value="042" {{ phone1_chk.5 }}>042</option>
+                                    <option value="043" {{ phone1_chk.6 }}>043</option>
+                                    <option value="044" {{ phone1_chk.7 }}>044</option>
+                                    <option value="051" {{ phone1_chk.8 }}>051</option>
+                                    <option value="053" {{ phone1_chk.9 }}>053</option>
+                                    <option value="054" {{ phone1_chk.10 }}>054</option>
+                                    <option value="055" {{ phone1_chk.11 }}>055</option>
+                                    <option value="062" {{ phone1_chk.12 }}>062</option>
+                                    <option value="063" {{ phone1_chk.13 }}>063</option>
+                                    <option value="064" {{ phone1_chk.14 }}>064</option>
+                                    <option value="070" {{ phone1_chk.15 }}>070</option>
+                                </select>
+                                -
+                                <input class="tel" name="tel2" type="tel" placeholder="" value="{{ account.9 }}" maxlength="4" required>
+                                -
+                                <input class="tel" name="tel3" type="tel" placeholder="" value="{{ account.10 }}" maxlength="4" required>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ship_l">우편번호</td>
+                            <td class="ship_r" id="postcode_l">
+                                <input class="postcode" id="postcode_a" name="postcode" type="text" placeholder="우편번호" value="{{ account.5 }}" style="width: 60px;" required readonly>
+                            </td>
+                            <td class="ship_r">
+                                <button type="button" id="search_postcode_btn" class="search_postcode_btn" onclick="sample6_execDaumPostcode()">우편번호 검색</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ship_l">주소</td>
+                            <td class="ship_r" colspan="2">
+                                <input class="address" id="address1_a" name="address1" type="text" placeholder="도로명 주소" value="{{ account.6 }}" style="width:270px;" required readonly>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ship_l">상세 주소</td>
+                            <td class="ship_r" colspan="2">
+                                <input class="address" id="address2_a" name="address2" type="text" placeholder="상세 주소" value="{{ account.7 }}" style="width:270px;" required>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="ship_l">배송 메모</td>
+                            <td class="ship_r" colspan="2">
+                                <input class="orderMsg" name="orderMsg" type="text" placeholder="내용을 입력하세요." value="" style="width:230px;">
+                            </td>
+                        </tr>
+
+
+                    </table>
+                </div>
+            </div>
+            <!---->
+
+
+            <!--  결제 정보  -->
+            <h3 class="h3_txt1" id="h3_txt4">결제 수단</h3>
+
+
+            <!--  결제 내용  -->
+            <div class="payment_box">
+                <table class="payment_table">
+                    <tr>
+                        <td class="payment_table_chk">
+                            <input type="checkbox" name="Payment" onclick="return false;" value="무통장입금" checked>
+                            <span>무통장 입금</span>
+                        </td>
+                        <td></td>
+
+                        <td class="payment_table_td2" rowspan="7">
+                            <p class="payment_table_td2_1">최종 결제 금액</p>
+                            <p class="payment_table_td2_2">상품 금액 {{ plant_buy_info_total_price }}원</p>
+                            <p class="payment_table_td2_3">+</p>
+                            <p class="payment_table_td2_4">배송비 {{ plant_buy_info_ship }}원</p> <!--  배송비  -->
+                            <p class="payment_table_td2_5">{{ plant_buy_info_ship_total_price }} 원</p> <!--  총 주문 금액  -->
+                            <p class="payment_table_td2_6"><input id="orderButton" class="btn btn-primary" type="submit" value="결제하기"></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" rowspan="6" class="payment_table_td3"></td>
+                    </tr>
+
+                    <tr>
+                    </tr>
+
+                    <tr>
+                    </tr>
+
+                    <tr>
+                    </tr>
+
+                    <tr>
+                    </tr>
+
+                    <tr>
+                    </tr>
+
+                </table>
+
+            </div>
+            <!---->
+
+        </form>
+
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

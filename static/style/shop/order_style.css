@@ -1,0 +1,217 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin: 0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+}
+
+.conA {
+    margin-top: 180px;
+}
+/* */
+
+
+/* confirm_order.html */
+.cmfO_myPG {
+    margin: auto 30px;
+}
+
+.cmfO_myPG_title {
+    width: 70%;
+
+    margin: 0 auto;
+    padding: 10px 0;
+    padding-bottom: 20px;
+
+    text-align: center;
+    color: #664533;
+    border-bottom: 2px solid #7D6151;
+}
+
+.cmfO_myPG_orderList {
+    width: 70%;
+    margin: 0px auto;
+    margin-bottom: 150px;
+}
+
+.cmfO_myPG_item_list {
+    text-align: left;
+    justify-content: left;
+}
+
+.cmfO_myPG_blk {
+    display: block;
+
+    padding: 15px 40px;
+
+    border-bottom: 2px dotted #E6DFDA;
+    background-color: #F7F4F2;
+}
+
+.cmfO_myPG_blk_txt1{
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 30px;
+    color: #805E4D;
+}
+
+.cmfO_myPG_blk_txt2{
+    font-size: 15px;
+    font-weight: bold;
+    color: #593B2D;
+}
+
+.cmfO_myPG_blk_txt3 {
+    float: right;
+    margin-top: -45px;
+    padding: 8px 10px;
+
+    border: 2px solid #4D382E;
+    border-radius: 5px;
+
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    color: #F5F7F2;
+    background-color: #79994D;
+}
+.cmfO_myPG_blk_txt3:hover {
+    text-decoration: underline;
+    background-color: #83A653;
+}
+.cmfO_myPG_blk_txt3:active {
+    background-color: #BF977C;
+}
+
+.cmfO_myPG_item {
+    border-bottom: 2px solid #7D6151;
+	line-height: 100px;
+
+    padding: 20px 50px;
+
+
+    display: flex;
+    flex-flow: row wrap;
+}
+.cmfO_myPG_item:hover {
+    background-color: #F7F3F0;
+}
+
+.cmfO_myPG_item_main {
+    display: flex;
+
+    margin-right: 50px;
+
+    width: 300px;
+}
+
+.cmfO_myPG_item_main>a {
+    margin-left: 30px;
+    justify-content: left;
+	line-height: 30px;
+
+	font-weight: bold;
+    text-decoration: none;
+    color: #544537;
+}
+.cmfO_myPG_item_main>a:hover {
+    text-decoration: underline;
+}
+
+.cmfO_myPG_item_main>a>img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.cmfO_myPG_item_main>a>p {
+    text-align: center;
+}
+
+.cmfO_myPG_item_main_span {
+    margin-left: 30px;
+	line-height: 120px;
+    color: #544537;
+}
+
+.cmfO_myPG_item_detail {
+    display: flex;
+    flex-flow: row wrap;
+
+    width: 500px;
+
+    color: #544537;
+    text-align: right;
+	line-height: 120px;
+}
+
+.cmfO_myPG_item_detail>p {
+    display: block;
+    text-align: right;
+}
+
+.price {
+    width: 30%;
+    min-width: 150px;
+}
+
+.payment {
+    width: 30%;
+    min-width: 150px;
+}
+
+.pay_state {
+    width: 30%;
+    min-width: 150px;
+    color: #73993D;
+}
+
+.payment, .pay_state {
+	font-weight: bold;
+}
+
+@media screen and (min-width: 590px) and (max-width: 865px) {
+    .cmfO_myPG_item_main_span {
+        display: flex;
+        line-height: 20px;
+    }
+
+    .cmfO_myPG_item_detail {
+        line-height: 40px;
+    }
+}
+
+@media screen and (min-width: 10px) and (max-width: 590px) {
+    .cmfO_myPG_item_main {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .cmfO_myPG_item_main_span {
+        display: flex;
+        line-height: 20px;
+    }
+
+    .cmfO_myPG_item_detail {
+        line-height: 40px;
+    }
+
+    .price {
+        margin-top: 20px;
+    }
+}
+
+.order_null {
+    margin-top: 80px;
+    text-align: center;
+    color: gray;
+}
+/* */
+
+
+/* order_detail.html */
+
+/* */

@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+footer {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+/*footer*/
+.footer {
+    background-color: #87614B;
+    height: 230px;
+    text-align: center;
+}
+
+.footA {
+    color: white;
+    font-size: 12px;
+    padding-top:30px;
+    padding-bottom: 20px;
+}
+
+.footA span{
+    padding: 5px 20px;
+    display:inline-block;
+}
+
+.footA a{
+    text-decoration:none;
+    color:white;
+}
+
+.footB p{
+    margin-top: 30px;
+    font-size: 25px;
+    color: white;
+    opacity: 0.5;
+}
+
+.footC {
+    padding-top: 15px;
+}
+
+.footC span{
+    font-size: 13px;
+    color: white;
+    opacity: 0.5;
+    padding: 0 10px;
+}
+
+.footD {
+    font-size: 10px;
+    padding-top: 10px;
+    color: white;
+    opacity: 0.5;
+}

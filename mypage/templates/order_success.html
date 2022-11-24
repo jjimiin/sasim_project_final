@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 구매</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/mypage/profile_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+
+
+{% block content %}
+
+    <div class="conA">
+
+        <div class="odS_boxA">
+            <h2 class="odS_boxA_h2">주문이 완료되었습니다!</h2>
+
+            <p class="odS_boxA_txt1">무통장 입금 안내</p>
+            <p class="odS_boxA_txt2">주문 후 2일 이내로 입금이 확인되지 않을 시,</p>
+            <p class="odS_boxA_txt3">주문이 취소 처리되오니 주의하시길 바랍니다.</p>
+        </div>
+
+        <div class="odS_boxB">
+            <a href="{% url 'confirm_order' %}">주문 조회</a>
+        </div>
+
+        <h3 class="odS_h3">입금 계좌</h3>
+
+        <div class="odS_boxC">
+            <div class="odS_boxC_txt1">
+                <p class="odS_boxC_txt1_l">입금자명</p>
+                <p class="odS_boxC_txt1_r">키움</p>
+            </div>
+
+            <div class="odS_boxC_txt2">
+                <p class="odS_boxC_txt1_l">은행명</p>
+                <p class="odS_boxC_txt1_r">카카오뱅크</p>
+            </div>
+
+            <div class="odS_boxC_txt3">
+                <p class="odS_boxC_txt1_l">계좌번호</p>
+                <p class="odS_boxC_txt1_r">3333-xx-xxxxxxx</p>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

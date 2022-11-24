@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 나의 1:1문의 조회</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/board/contact.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!---->
+
+
+{% block content %}
+
+    <div class="conA">
+
+        <section class="Inquiry">
+            <p class="I-one"><b>1:1 문의</b></p>
+            {% if account.0 != 'sasim' %}
+            <p class="I-two"><a href="{% url 'home' %}">홈</a> > <a href="{% url 'mypage_main' %}">마이페이지</a> > 나의 1:1 문의</p>
+            {% elif account.0 == 'sasim' %}
+            <p class="I-two"><a href="{% url 'home' %}">홈</a> > <a href="{% url 'mypage_main' %}">관리자페이지</a> > 미답변 문의 확인</p>
+            {% endif %}
+        </section>
+
+        <!--버튼-->
+        <!--    1:1문의 작성 버튼    -->
+        <div class="Button">
+        {% if account and account.0 != 'sasim' %} <!--  회원일 때 작성 가능  -->
+            <a href="{% url 'post_new' %}"><button>문의하기</button></a>
+        {% endif %}
+            <!--  if문 종료  -->
+        </div>
+
+        <!--테이블-->
+
+        <section>
+            <ul>
+                <li>
+                    <ul class="ITable">
+                        <li style="color:#652A18;">No</li>
+                        <li>제목</li>
+                        <li>작성자</li>
+                        <li>작성일</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!--    게시글 없을 때    -->
+            {% if not n_contact_posts %}
+                <div class="ContactA">
+                    <p class="noContactPost_p">작성한 글이 없습니다.</p>
+                </div>
+            {% endif %}
+
+
+            <!--    게시글    -->
+            {% for post in page_obj %}
+                <div class="ContactA">
+                    <ul class="ContactB">
+
+                        <li>{{ forloop.revcounter }}</li>
+
+                        <li class="ContactC">
+                            <!--  제목  -->
+                                {% if not account %} <!--  비회원일 때 글 확인 불가  -->
+                                <p><a href = "#" onClick = "alert('회원만 접근 가능한 글입니다.')">{{ post.title }}</a></p>
+
+                                {% else %} <!--  회원일 때 확인 가능  -->
+                                <p><a href="{% url 'contact_detail' pk=post.pk %}">{{ post.title }}</a></p>
+                                {% endif %}
+                            <!--  if문 종료  -->
+                        </li>
+
+                        <li>
+                            <p>{% if post.mb_id != 'sasim' %}{{ post.mb_id }}{% else %}탈퇴한 회원{% endif %}</p>
+                        </li>
+
+                        <li>
+                            <p>{{ post.created_date | date:'Y-m-d' }}</p>
+                        </li>
+
+                    </ul>
+                </div>
+            {% endfor %}
+        </section>
+
+
+
+        <!--  페이지  -->
+        <ul class="pagination">
+            <!-- 이전페이지 -->
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">이전</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+                </li>
+            {% endif %}
+
+            <!-- 페이지리스트 -->
+            {% for page_number in page_obj.paginator.page_range %}
+                {% if page_number == page_obj.number %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            <!-- 다음페이지 -->
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">다음</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                </li>
+            {% endif %}
+        </ul>
+        <!-- 페이징처리 끝 -->
+
+
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+    background-color:white;
+}
+
+.conA {
+    margin-top: 160px;
+}
+/*  */
+
+/* mypage_main.html 시작 */
+.Mtext {
+    width: 70%;
+    max-width: 800px;
+    height: 90px;
+
+    margin: 0px auto;
+
+    background-color: #A67E63;
+
+    border-top: 3px solid #A67E63;
+    border-left: 3px solid #A67E63;
+    border-right: 3px solid #A67E63;
+    border-radius: 15px 15px 0 0;
+}
+
+.Mtext1 {
+    width: 70%;
+    height: 90px;
+    background-color:#F5EFEA;
+    margin: 0px auto;
+}
+
+.Mtext p {
+    padding-top:30px;
+    padding-left:40px;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #F7F3F0;
+}
+
+.Mtext1 p {
+    padding-top:30px;
+    padding-left:40px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color:#65584D;
+}
+
+.myA {
+    display:flex;
+    flex-flow: row wrap;
+
+    margin: 30px auto;
+    padding: 20px;
+
+    width:60%;
+    border: 2px solid #806B58;
+    border-radius: 5px;
+    background-color: #FAF9F7;
+}
+
+.flexA img{
+    margin-top:5px;
+    margin-left:5px;
+}
+
+.flexB {
+    padding: 5%;
+    padding-left: 5%;
+}
+
+.flexB p {
+    color: #706057;
+    margin-bottom: 5px;
+}
+
+.flexB_1 {
+    padding-bottom: 27px;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+/*프로필 끝*/
+
+/*카테고리 선택*/
+.admin_txt_a {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #516633;
+    margin-bottom:50px;
+}
+
+.admin_txt_b {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #664233;
+    margin-bottom:50px;
+}
+
+.myB {
+    width: 70%;
+    max-width: 800px;
+
+    margin: 0px auto 150px auto;
+
+    border-bottom: 3px solid #A67E63;
+    border-left: 3px solid #A67E63;
+    border-right: 3px solid #A67E63;
+    border-radius: 0 0 5px 5px;
+}
+
+.myB1 {
+    padding:100px 0px;
+}
+
+.myB1 img {
+    display: block;
+    margin: 0px auto;
+    margin-bottom:10px;
+}
+
+.myB2 {
+    background-color: #F2EDEB;
+    padding:100px 0px;
+}
+
+.myB2 img {
+    display: block;
+    margin: 0px auto;
+    margin-bottom:10px;
+}
+
+.memberA {
+    margin-bottom:50px;
+}
+
+
+.myB_a {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0px auto;
+
+    width: 80%;
+    text-align: center;
+    justify-content: center;
+}
+
+.myB_a input[type=button]{
+    width: 150px;
+    cursor: pointer;
+
+    padding: 13px 17px;
+    margin: 10px;
+
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #628026;
+    border-radius: 5px;
+    color: #F4F7F0;
+    background-color: #7A993D;
+}
+
+.myB_a input[type=button]:hover {
+    text-decoration: underline;
+    background-color: #6E8C31;
+}
+.myB_a input[type=button]:active {
+    color: #516633;
+    background-color: #A0CC66;
+}
+
+
+.myB_b {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0px auto;
+
+    width: 80%;
+    text-align: center;
+    justify-content: center;
+}
+
+.myB_b input[type=button]{
+    width: 150px;
+    cursor: pointer;
+
+    padding: 13px 17px;
+    margin: 10px;
+
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #664029;
+    border-radius: 5px;
+    color: #F7F3F0;
+    background-color: #805940;
+}
+
+.myB_b input[type=button]:hover {
+    text-decoration: underline;
+    background-color: #734C34;
+}
+.myB_b input[type=button]:active {
+    color: #664029;
+    background-color: #CCA68F;
+}
+
+/*최근 주문조회*/
+.myC {
+    padding-top: 50px;
+    padding-bottom: 150px;
+
+    background-color: #FCFAF8;
+}
+
+.myC h2 {
+    margin-bottom: 40px;
+
+    color: #80634D;
+    text-align: center;
+}
+
+.myC ul{
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+    text-align: center;
+}
+
+.mTitle li{
+    list-style: none;
+    text-align: center;
+
+    padding: 0;
+    margin: 0;
+
+    width: 80%;
+    min-width: 100px;
+}
+
+ul.mTitle {
+    display: flex;
+    width: 80%;
+    max-width: 900px;
+
+    margin: 0px auto;
+    margin-top: 50px;
+    padding: 15px;
+
+    border-top: 2px solid #5B4C48;
+    border-bottom: 2px solid #877260;
+    border-left:1px solid #B69E8E;
+    border-right:1px solid #B69E8E;
+
+    font-size: 13pt;
+    font-weight: bold;
+    text-align: center;
+    justify-content: center;
+    color: #F7F4F2;
+    background-color: #805B40;
+}
+
+.ContactA{
+    width: 80%;
+    max-width: 900px;
+
+    margin: 0px auto;
+    padding: 0 14px;
+
+    border-bottom: 2px solid #B69E8E;
+    border-left: 2px solid #B69E8E;
+    border-right: 2px solid #B69E8E;
+
+    font-size: 14px;
+    color: #664D3D;
+}
+
+.ContactB {
+    display: flex;
+    justify-content: center;
+
+    border-bottom: 1px solid #B69E8E;
+}
+.ContactB:hover {
+    background-color: #F2F0EB;
+}
+.ContactB:active {
+    background-color: #E6E1D5;
+}
+
+.ContactB li{
+    width: 80%;
+    min-width: 100px;
+
+    padding: 20px 0;
+}
+
+.order_null {
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.ContactC {
+    padding: 15px;
+    margin: 10px 0;
+
+    text-align: center;
+    color: #F5F7F2;
+    background-color: #6F804D;
+}
+.ContactC:hover {
+    background-color: #7C8C5B;
+}
+.ContactC:active {
+    color: #546633;
+    background-color: #B8CC8F;
+}

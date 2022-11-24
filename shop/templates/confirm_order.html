@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 주문 조회</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/shop/order_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!-- 풋터 -->
+
+
+{% block content %}
+
+    <div class="conA">
+
+        <div class="cmfO_myPG">
+
+            <h2 class="cmfO_myPG_title">주문 조회</h2>
+
+
+            <div class="cmfO_myPG_orderList">
+
+
+                {% if order_null %}
+                <!--  주문 내역이 없을 경우  -->
+                <div class="order_null">
+                    {{ order_null }}
+                </div>
+                <!-- -->
+                {% endif %}
+
+
+                <!--  주문 목록  -->
+                <div class="cmfO_myPG_item_list">
+                    <!--  for문  -->
+                    {% for list in order_list %}
+
+                        <div class="cmfO_myPG_blk">
+                            <!--  주문 날짜  -->
+                            <p class="cmfO_myPG_blk_txt1">{{ list.8 }}</p>
+                            <!--  주문 id  -->
+                            <p class="cmfO_myPG_blk_txt2">주문 번호: {{ list.0 }}</p>
+
+                            <!--  주문 상세  -->
+                            <a class="cmfO_myPG_blk_txt3" href="{% url 'order_detail' id=list.0 %}">주문 상세</a>
+                        </div>
+
+
+                        <!--  각 상품  -->
+                        <div class="cmfO_myPG_item">
+                            <div class="cmfO_myPG_item_main">
+
+                                <!--  주문 상품명 대표 1개  -->
+                                <a href="{% url 'plant_detail' id=list.1 %}">
+                                    <!--  상품 이미지  -->
+                                    <img src="{% static list.3 %}" alt="이미지"> <!--  이미지  -->
+                                    <!--  상품명  -->
+                                    <p>{{ list.2 }}</p>
+                                </a>
+
+                                <!--    if문: 주문 상품이 하나 이상일 경우    -->
+                                {% if list.4 > 0 %}
+                                    <p class="cmfO_myPG_item_main_span">외 {{ list.4 }}건</p> <!--  그외 주문 개수  -->
+                                {% endif %}
+                                <!-- if문 종료 -->
+                            </div>
+
+
+                            <div class="cmfO_myPG_item_detail">
+                                <!--  총 주문 금액  -->
+                                <p class="price">{{ list.5 }}원</p>
+                                <!--  지불 방식  -->
+                                <p class="payment">{{ list.6 }}</p>
+                                <!--  지불 상태  -->
+                                <p class="pay_state">{{ list.7 }}</p>
+                            </div>
+                            <!---->
+
+                        </div>
+
+                    {% endfor %}
+                    <!-- for문 종료 -->
+                </div>
+                <!-- -->
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin: 0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+}
+
+.conA {
+    margin-top: 150px;
+    margin-left:18%;
+    margin-right:18%;
+}
+/* */
+
+.conB p{
+    color:#5B4C48;
+}
+
+.conB {
+    margin:15px 0px;
+}
+
+.conC {
+    background-color:#EEF9D6;
+    border-radius:10px;
+    padding:10px 15px;
+    color:#6D8C62;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+/*table*/
+
+.conD {
+    padding:10px;
+    border-top:2px solid #185F00;
+    border-bottom:2px solid #185F00;
+    margin-bottom:80px;
+}
+
+.conD img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/*오렌지 자스민*/
+.conD a {
+    text-decoration:none;
+    color:#114800;
+    font-weight:bold;
+    font-size:1.1em;
+}
+
+.conD td:nth-child(1){
+    padding-top:10px;
+    padding-right:10px;
+    padding-left:10px;
+    padding-bottom:8px;
+}
+
+/*단가*/
+.conD td:nth-child(2)>p {
+    color:#6D8C62;
+}
+
+.conD th:nth-child(2) {
+    float:left;
+}
+
+/*수량*/
+.conD td:nth-child(3)>p:nth-child(1) {
+    color:#114800;
+    font-weight:bold;
+    font-size:1.1em;
+}
+
+/*수량 개수*/
+.conD td:nth-child(3)>p:nth-child(2) {
+    color:#6D8C62;
+}
+
+.conD td:nth-child(3) {
+    text-align:center;
+}
+
+/*총 가격*/
+.conD td:nth-child(4)>p:nth-child(1) {
+    color:#114800;
+    font-weight:bold;
+    font-size:1.1em;
+}
+
+/*금액*/
+.conD td:nth-child(4)>p:nth-child(2) {
+    color:#6D8C62;
+}
+
+.conD td:nth-child(4) {
+    text-align:center;
+}
+
+/*테이블*/
+.conD table {
+    border-bottom:solid 1px #8DB680;
+    width:100%;
+}
+
+/*배송지 정보*/
+
+.conE {
+    border-top:2px solid #54412F;
+    border-bottom:2px solid #54412F;
+    padding-bottom:15px;
+    margin-bottom:80px;
+}
+
+.conE .sectionA {
+    padding-top:15px;
+    padding-bottom:15px;
+    border-bottom:1px solid #B5A094;
+    color:#54412F;
+    font-weight:bold;
+    font-size:1.2em;
+    margin-bottom:15px;
+}
+
+.sectionA>p {
+    padding-left:20px;
+}
+
+.conE > p {
+    padding-left:20px;
+    line-height:50px;
+    font-size:1rem;
+    color:#9e7862;
+}
+
+.conE > p > span {
+    color:#54412F;
+    font-weight:bold;
+    margin-right:25px;
+    font-size:1rem;
+}
+
+/*주문 결제 정보*/
+.conF {
+    border-top:2px solid #904E39;
+    border-bottom:2px solid #904E39;
+    padding-bottom:15px;
+    margin-bottom:10px;
+}
+
+.conF .sectionB {
+    padding-top:15px;
+    padding-bottom:15px;
+    border-bottom:1px solid #B9A291;
+    color:#8f5442;
+    font-weight:bold;
+    font-size:1.2em;
+    margin-bottom:15px;
+}
+
+.sectionB>p {
+    padding-left:20px;
+}
+
+.conF > p {
+    padding-left:20px;
+    line-height:50px;
+    font-size:1rem;
+    color:#9e7862;
+}
+
+.conF > p:nth-child(3) {
+    color:#C96D50;
+}
+
+.conF > p > span {
+    color:#904E39;
+    font-weight:bold;
+    margin-right:25px;
+    font-size:1rem;
+}
+
+
+/*sectionC*/
+
+.sectionC {
+    margin-top:15px;
+    border-top:1px solid #D7BCA9CC;
+    padding-top:15px;
+    line-height:50px;
+}
+
+.sectionC > p {
+    padding-left:20px;
+    line-height:50px;
+    font-size:1rem;
+    color:#9e7862;
+}
+
+.sectionC > p:nth-child(3) {
+    color:#C96D50;
+}
+
+.sectionC > p > span {
+    color:#904E39;
+    font-weight:bold;
+    margin-right:25px;
+    font-size:1rem;
+}
+
+/*주문 취소*/
+.cancelA {
+    color:red;
+    text-align:center;
+    background:rgba(237, 203, 185, 0.2);
+    border:1px solid #B89785;
+    border-radius:5px;
+    padding:40px 0px;
+    font-weight:bold;
+    font-size:1.2rem;
+}
+
+
+/*목록 버튼*/
+.ListButton {
+    margin-bottom:50px;
+    margin-top:50px;
+    padding: 6px 8px;
+
+    position: relative;
+    left:45%;
+
+    font-size: 14px;
+    font-weight:bold;
+    cursor:pointer;
+
+    background-color: #805940;
+
+    border: 2px solid #664733;
+    border-radius: 3px;
+}
+.ListButton a {
+    color: #F0EBE0;
+    text-decoration: none;
+}
+
+.ListButton:hover {
+    background-color: #99735C;
+}
+.ListButton:active {
+    background-color: #B3917D;
+}
+
+/*주문 취소 버튼*/
+.cancelOrderBtn {
+    margin-bottom:50px;
+    margin-top:50px;
+    padding: 6px 8px;
+
+    position: relative;
+    left:40%;
+
+    font-weight:bold;
+    font-size: 14px;
+    cursor:pointer;
+
+    color: #50732E;
+    background-color: #E5F5DF;
+
+    border: 2px solid #698C46;
+    border-radius: 3px;
+}
+
+.cancelOrderBtn:hover {
+    background-color: #D4E6C3;
+}
+.cancelOrderBtn:active {
+    color: #E5F5DF;
+    background-color: #698C46;
+}
+
+
+/* 주문 취소 확인 박스 */
+#cancelBox {
+    margin-top: 20px;
+    margin-bottom: 100px;
+    padding: 50px 20px;
+    padding-top: 70px;
+
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #77B300;
+    background-color: #EDE8E6;
+
+    border: 2px solid #99624D;
+    border-radius: 15px;
+}
+
+#cancelOrderButton {
+    margin-top: 15px;
+    padding: 8px 15px;
+
+    font-weight: bold;
+    color: #E6E1DF;
+    background-color: #663D29;
+
+    border: 2px solid #4D2E1F;
+    border-radius: 5px;
+}
+
+#cancelOrderButton:hover {
+    background-color: #805540;
+}
+#cancelOrderButton:active {
+    color: #663D29;
+    background-color: #CCAFA3;
+}

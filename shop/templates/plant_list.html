@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 식물</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/shop/plant_list_style.css' %}" type="text/css"/>
+
+</head>
+<body>
+
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!---->
+
+
+{% block content %}
+
+    <div class="conA">
+
+        <!--    식물 카테고리    -->
+        <div class="plant_category">
+            <ul class="plant_category_main">
+                <a class="main_a" href="{% url 'plant_list' %}" style="background-color: {{category_chk1.0}}; color: {{category_chk1.1}};"><li class="main_li">전체</li></a>
+                <a class="main_a" href="{% url 'plant_list_1' %}" style="background-color: {{category_chk2.0}}; color: {{category_chk2.1}};"><li class="main_li">관엽</li></a>
+                <a class="main_a" href="{% url 'plant_list_2' %}" style="background-color: {{category_chk3.0}}; color: {{category_chk3.1}};"><li class="main_li">다육</li></a>
+                <a class="main_a" href="{% url 'plant_list_3' %}" style="background-color: {{category_chk4.0}}; color: {{category_chk4.1}};"><li class="main_li">구근</li></a>
+                <a class="main_a" href="{% url 'plant_list_4' %}" style="background-color: {{category_chk5.0}}; color: {{category_chk5.1}};"><li class="main_li">허브</li></a>
+                <a class="main_a" href="{% url 'plant_list_5' %}" style="background-color: {{category_chk6.0}}; color: {{category_chk6.1}};"><li class="main_li">선인장</li></a>
+            </ul>
+        </div>
+        <!--        -->
+
+
+        <!--   검색 바   -->
+        <div class="search_plant">
+            <form class="searchForm" name="searchfrm" method="POST" action="{% url 'plant_list' %}">
+                {% csrf_token %}
+
+                <input class="search_content" name="search_content" type="text" placeholder="전체 상품에서 검색" value="" required>
+                <input id="searchBtn" name="searchBtn" class="searchBtn" type="submit" value="검색">
+            </form>
+        </div>
+        <!---->
+
+
+        <!--    식물    -->
+        <div class="conB">
+            <div class="plant_info_con">
+                <!--    식물 목록    -->
+                {% for all in page_obj %}
+                    <div class="plant_info_con2">
+                        <!--    식물 이미지    -->
+                        <a href="{% url 'plant_detail' id=all.0 %}">
+                            <img class="con2_img" src="{% static all.3 %}" alt="이미지">
+                            <!--    식물 이름    -->
+                            <h2>{{ all.1 }}</h2>
+                        </a>
+                        <!--    식물 가격    -->
+                        <p class="text2">{{ all.2 }}원</p>
+                    </div>
+                {% endfor %}
+                <!-- -->
+            </div>
+        </div>
+        <!---->
+
+
+        <!--  페이지  -->
+        <ul class="pagination">
+            <!-- 이전페이지 -->
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">이전</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+                </li>
+            {% endif %}
+
+            <!-- 페이지리스트 -->
+            {% for page_number in page_obj.paginator.page_range %}
+            {% if page_number >= page_obj.number|add:-3 and page_number <= page_obj.number|add:3 %}
+                {% if page_number == page_obj.number %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page={{ page_number }}" style="text-decoration: underline; color: green; font-weight: bold; font-size: 18px;">{{ page_number }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+
+            <!-- 다음페이지 -->
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">다음</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                </li>
+            {% endif %}
+        </ul>
+        <!-- 페이징처리 끝 -->
+
+    </div>
+
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

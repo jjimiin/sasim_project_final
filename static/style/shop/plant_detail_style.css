@@ -1,0 +1,268 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+}
+
+.conA {
+    margin-top: 70px;
+}
+/* */
+
+/*Form*/
+.buyForm {
+    display:flex;
+}
+
+.left {
+    flex: 1;
+    text-align: right;
+    margin-top: 135px;
+}
+
+.left img{
+    width: 60%;
+    min-width: 200px;
+    max-width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.right {
+    flex: 1;
+    padding-left: 50px;
+    margin-top: 100px;
+
+    justify-content: center;
+    text-align: left;
+}
+
+.pname {
+    margin-top: 20px;
+    font-size: 2rem;
+    color: #372820;
+}
+
+.pprice {
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-bottom: 22px;
+
+    color:#54412F;
+    font-size: 22px;
+}
+
+/*키워드*/
+.keyword {
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-left: 15px;
+
+    border-top:1px solid #876C5D;
+    border-bottom:1px solid #876C5D;
+    color:#7B5743;
+
+    width: 70%;
+    max-width: 400px;
+}
+
+/*배송비*/
+
+.delivery {
+    margin-bottom:20px;
+    padding-top:20px;
+    padding-bottom:20px;
+
+    border-bottom:1px solid #876C5D;
+    color: #4B3630;
+
+    width: 70%;
+    max-width: 415px;
+}
+
+.delivery p {
+    margin-left:15px;
+}
+
+.delivery_txt2 {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #735850;
+}
+
+
+/* 재고 + 수량 버튼 */
+.stock {
+    margin-left: 15px;
+    margin-bottom: 12px;
+
+    font-size: 15px;
+    color: #A6978D;
+}
+
+.stock_txt {
+    margin-bottom: 3px;
+
+    font-size: 18px;
+    color: red;
+}
+
+.qty {
+    text-align: left;
+    margin-left: 15px;
+    display: flex;
+}
+
+
+.qty .count {
+    color: #000;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    color:#7B5C4A;
+    line-height: 30px;
+
+    padding: 0 7px;
+    min-width: 30px;
+    text-align: center;
+
+    border: 2px solid #99735C;
+    border-right: none;
+    border-left: none;
+}
+
+.qty .plus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    width: 30px;
+    height: 30px;
+    font: 25px/1 Arial,sans-serif;
+    text-align: center;
+
+    border: 2px solid #664733;
+    background-color: #8C6246;
+}
+
+.qty .minus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    width: 30px;
+    height: 30px;
+    font: 25px/1 Arial,sans-serif;
+    text-align: center;
+    background-clip: padding-box;
+
+    border: 2px solid #664733;
+    background-color: #8C6246;
+}
+
+.qty_a {
+    text-decoration: none;
+    color: #F7F3F0;
+}
+
+/*수량 숫자칸*/
+span{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+input[type="number"]{
+    border: 0;
+    width: 2%;
+}
+nput::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input:disabled{
+    background-color:white;
+}
+
+
+/*구매하기 / 장바구니 버튼*/
+
+.pbutton{
+    display:flex;
+    flex-flow: row wrap;
+
+    width: 70%;
+    max-width: 415px;
+    margin-top:20px;
+
+    border-top:1px solid #876C5D;
+}
+
+.buyButton {
+    flex:2;
+    margin: 25px 7px 0 7px;
+    padding: 10px 12px;
+
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    background-color: #664733;
+
+    border: 2px solid #664733;
+    border-radius: 5px;
+}
+
+.buyButton:hover {
+    text-decoration: underline;
+    background-color: #73543F;
+}
+.buyButton:active {
+    background-color: #80614D;
+}
+
+.cartButton {
+    flex:1;
+    margin: 25px 7px 0 7px;
+    padding: 10px 12px;
+
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    color: #5D5D5D;
+    background-color: white;
+
+    border: 2px solid #8C8C8C;
+    border-radius: 5px;
+}
+
+.cartButton:hover {
+    text-decoration: underline;
+    background-color: #F2F2F2;
+}
+.cartButton:active {
+    background-color: #E6E6E6;
+}
+
+
+/*상세 이미지*/
+.plant_detail {
+    margin-top: 50px;
+    text-align: center;
+}
+
+
+.plant_detail img {
+    border-top: 2px solid #997D6B;
+
+    margin-top: 20px;
+    padding-top: 50px;
+
+    width: 50%;
+    min-width: 450px;
+}

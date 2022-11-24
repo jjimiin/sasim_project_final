@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 주문 취소</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'plant_detail_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+    <!--  html/css 프론트 작업 안해도 됨!!!!  -->
+
+    {% block head %}
+        {% include "header.html" %}
+    {% endblock%}
+
+    <h1>주문 취소 완료</h1>
+
+
+    <!-- 풋터 -->
+    {% block foot %}
+        {% include "footer.html" %}
+    {% endblock%}
+    <!---->
+
+</body>
+</html>

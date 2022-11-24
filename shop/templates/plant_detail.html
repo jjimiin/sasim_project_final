@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 식물 상세</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/shop/plant_detail_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+
+
+{% block content %}
+
+    <div class="conA">
+
+        <form class="buyForm" method="POST" action="{% url 'plant_buy' %}">
+            {% csrf_token %}
+            <!--    프론트에선 안 보임 - 프론트 작업x    -->
+            <!--    장바구니 구분용    -->
+            <input type="hidden" name="sort" value="구매">
+            <!--    해당 식물 데이터 넘기기    -->
+            <input type="hidden" name="plant_buy_info_id" value="{{ plant_info.0 }}">
+            <!--    -->
+
+        <div class="left">
+            <!-- 식물 사진 (크기 조절 여기서 width, height) -->
+            <img src="{% static plant_info.10 %}" alt="이미지">
+        </div>
+
+        <div class="right">
+            <p class="pname">{{ plant_info.2 }}</p> <!-- 식물 이름 -->
+            <p class="pprice">{{ plant_info.8 }}원</p> <!-- 식물 가격 -->
+
+            <!--  # 키워드  -->
+            <div class="keyword">
+                <p>#{{ plant_animal }}</p> <!-- 반려동물 -->
+                <p>{% if plant_effect1 %}#{{ plant_effect1 }}{% endif %} {% if plant_effect2 %}#{{ plant_effect2 }}{% endif %}</p> <!-- 효과 -->
+                <p>#{{ plant_size }}</p> <!-- 크기 -->
+                <p>#{{ plant_time }}</p> <!-- 시간 -->
+                <!--  #  -->
+            </div>
+
+            <div class="delivery">
+                <p class="delivery_txt1">배송비: 2,000원</p>
+                <p class="delivery_txt2">2만원 이상 구매 시 배송비 무료</p>
+            </div>
+
+            <div class="stock">
+                {% if pl_d_stock <= 10 and pl_d_stock != 0 %}
+                <p class="stock_txt">품절 임박!</p>
+                {% elif pl_d_stock == 0 %}
+                <p class="stock_txt">품절</p>
+                {% endif %}
+                <p>수량: {{ pl_d_stock }}개</p> <!-- 식물 가격 -->
+            </div>
+
+            <div class="qty">
+                <span class="minus bg-dark"><a href="javascript:change_qty2('m')" class="qty_a">-</a></span>
+                <input type="number" id="ct_qty" class="count" name="buy_amount" value="1" min="1" max="{{ plant_info.9 }}">
+                <span class="plus bg-dark"><a href="javascript:change_qty2('p')" class="qty_a">+</a></span>
+            </div>
+
+            <!--  구매/장바구니 버튼  -->
+            <div class="pbutton">
+                {% if plant_info.9 == '0' %} <!--  재고가 없을 때  -->
+
+                {% elif check %} <!--  회원일 때 구매/장바구니 정상 진행  -->
+                    <input id="cartButton" name="buyButton" class="cartButton" type="submit" onclick="alert('상품이 장바구니에 담겼습니다.')" value="장바구니">
+                    <input id="buyButton" name="buyButton" class="buyButton" type="submit" value="구매하기">
+
+                {% else %} <!--  비회원일 때 구매/장바구니 불가 안내창  -->
+                    <a class="cartButton" href="#" onclick="alert('로그인이 필요한 서비스입니다.')">장바구니</a>
+                    <a class="buyButton" href="#" onclick="alert('로그인이 필요한 서비스입니다.')">구매하기</a>
+                {% endif %}
+                <!--    -->
+            </div>
+        </div>
+        </form>
+
+        <div class="plant_detail">
+            <img src="{% static plant_info.11 %}" alt="이미지">
+        </div>
+
+    </div>
+
+
+<script>
+Number.prototype.format = function(){
+  if(this==0) return 0;
+
+  var reg = /(^[+-]?\d+)(\d{3})/;
+  var n = (this + '');
+
+  while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+
+  return n;
+};
+
+
+String.prototype.format = function(){
+  var num = parseFloat(this);
+  if( isNaN(num) ) return "0";
+
+  return num.format();
+};
+
+var basic_amount = parseInt('74000');
+
+function change_qty2(t){
+  //var min_qty = '수량버튼'*1;
+  var min_qty = 1;
+  var this_qty = $("#ct_qty").val()*1;
+  var max_qty = '{{ plant_info.9 }}'; // 현재 재고
+  if(t=="m"){
+    this_qty -= 1;
+    if(this_qty<min_qty){
+      //alert("최소구매수량 이상만 구매할 수 있습니다.");
+      alert("수량은 1개 이상 입력해 주십시오.");
+      return;
+      }
+    }
+    else if(t=="p"){
+      this_qty += 1;
+      if(this_qty>max_qty){
+        alert("죄송합니다. 재고가 부족합니다.");
+        return;
+        }
+    }
+
+var show_total_amount = basic_amount * this_qty;
+  //$("#ct_qty_txt").text(this_qty);
+  $("#ct_qty").val(this_qty);
+  $("#it_pay").val(show_total_amount);
+  $("#total_amount").html(show_total_amount.format());
+}
+
+</script>
+
+
+{% endblock%}
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

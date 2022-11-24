@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 공지사항</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/board/notice_detail_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+
+{% block content %}
+
+    <div class="conA">
+        <!--시작-->
+        <section class="Ntitle">
+            <p class="one"><b>공지사항</b></p>
+            <p class="two"><a href="{% url 'home' %}">홈</a> > <a href="{% url 'notice_list' %}">공지사항</a></p>
+        </section>
+
+
+        <!--    게시글     -->
+        <div class="post">
+            <!--    제목    -->
+            <div class="Ptitle">{{ n_post_detail.title }}</div>
+            <!--    제목    -->
+            <div class="Pdate">{{ n_post_detail.created_date | date:'Y-m-d H:i' }}</div>
+            <!--    내용    -->
+            <div class="Pcontent">{{ n_post_detail.text|linebreaksbr }}</div>
+        </div>
+        <!--    -->
+
+
+        <!--   목록 버튼   -->
+        <div class="List_btn">
+            <a href="{% url 'notice_list' %}" class="Button" id="nt_d_btn">목록</a>
+        </div>
+    </div>
+
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+{% endblock %}
+</body>
+</html>

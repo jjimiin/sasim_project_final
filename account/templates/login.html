@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움-로그인</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/account/login_style.css' %}" type="text/css"/>
+
+</head>
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!-- -->
+
+{% block content %}
+
+    <div class="conA">
+
+        <div class="login_box">
+            <div class="loginContainer">
+                <form class="loginForm" name="loginForm" method="POST" action="{% url 'login' %}">
+                    <h1>로그인</h1>
+
+                    <p class="subtxt">방문해주셔서 감사합니다.</p>
+
+                    {% csrf_token %}
+                    <div class = "login_container">
+
+                        {% if login_blank_error %}
+                        <p class="error">{{ login_blank_error }}</p>
+                        {% endif %}
+
+                        {% if login_blank_error2 %}
+                        <p class="error">{{ login_blank_error2 }}</p>
+                        {% endif %}
+
+                        {% if login_id_error %}
+                        <p class="error">{{ login_id_error }}</p>
+                        {% endif %}
+
+                        {% if login_pw_error %}
+                        <p class="error">{{ login_pw_error }}</p>
+                        {% endif %}
+
+                        <!--  회원 정보 작성란  -->
+                        <div class="login_info_box">
+                            <table class="login_info">
+
+                                <tr>
+                                    <td class="td_l">아이디</td>
+                                    <td class="td_r">
+                                        <input name="userid" type="text" class="userLogin" placeholder="아이디" value="{{ userid }}">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="td_l">비밀번호</td>
+                                    <td class="td_r">
+                                        <input name="password" type="password" class="userLogin" placeholder="비밀번호" value="">
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <div class="login_btn">
+                        <input id="loginButton" class="btn btn-primary" type="submit" value="로그인">
+                    </div>
+
+                    <div class="joinSite">
+                        <p class="join">계정이 없으신가요?<br><a class="joinBtn" href="{% url 'terms' %}">가입하기</a></p>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

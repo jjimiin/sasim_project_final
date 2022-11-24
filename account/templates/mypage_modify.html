@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원정보 수정</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/mypage/modify_style.css' %}" type="text/css"/>
+
+</head>
+<body>
+{% block content %}
+
+    <!--  비밀번호 변경  -->
+    {% if sort == 1 %}
+    <form class="modifyForm" method="POST" action="{% url 'mypage_modify' sort=1 %}">
+
+        <h1>비밀번호 변경</h1>
+
+        {% csrf_token %}
+        <div class = "modify_container">
+
+            {% if blank_pw_error %}
+            <span class="error">* {{ blank_pw_error }}</span>
+            {% endif %}
+
+            {% if current_pw_error %}
+            <span class="error">* {{ current_pw_error }}</span>
+            {% endif %}
+
+            {% if confirm_pw_error %}
+            <span class="error">* {{ confirm_pw_error }}</span>
+            {% endif %}
+
+            <p><input name="current_password" type="password" class="userModify" placeholder="기존 비밀번호" value=""></p>
+
+            <p><input name="new_password" type="password" class="userModify" placeholder="새 비밀번호" value=""></p>
+            <p><input name="confirm_password" type="password" class="userModify" placeholder="새 비밀번호 확인" value=""></p>
+
+        </div>
+
+        <div class="modify_btn">
+            <p><input id="modifyButton" class="btn btn-primary" type="submit" value="변경"></p>
+        </div>
+
+    </form>
+    <!--  end / 비밀번호 변경  -->
+
+    {% endif %}
+
+{% endblock%}
+</body>
+</html>

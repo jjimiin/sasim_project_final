@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | DB - 주문-아이템 테이블</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/account/userList_style.css' %}" type="text/css"/>
+
+</head>
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!-- -->
+
+
+{% block content %}
+    <div class="conA">
+
+        <div class="userList">
+
+            <div class="userList_txt">주문 아이템 목록</div>
+
+            <form class="searchForm" method="POST" action="{% url 'admin_orderItemList' %}">
+                {% csrf_token %}
+                <div class="searchBar">
+                    <!--    아이디 검색창    -->
+                    <input type="text" class="admin_search_txt" name="admin_search_txt" value="" placeholder="주문ID 입력">
+                    <input name="searchBtn" class="admin_search_btn" type="submit" value="검색">
+                    <!-- -->
+                </div>
+            </form>
+
+            <div class="userList_n">
+                <div class="userList_titleA">
+                    <p>id</p>
+                    <p>상품ID</p>
+                    <p>상품 단가</p>
+                    <p>구매 수량</p>
+                </div>
+
+                {% for list in orderItemList %}
+                <div class="userList_c">
+                    <div class="userList_title">
+                        <p class="userList_title_b">{{ list.0 }}</p>
+                        <p class="userList_title_b">{{ list.1 }}</p>
+                        <p>{{ list.2 }}</p>
+                        <p>{{ list.3 }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% if noSearch_txt %}
+                <div class="userList_c">
+                    <p class="noSearch_txt">{{ noSearch_txt }}</p>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+    </div>
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 마이페이지 - 비밀번호 확인</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/mypage/profile_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!---->
+
+
+{% block content %}
+
+    <div class="conA" style="margin-top: 280px;">
+        {% if orderStateCheck %}
+
+        <div class="chkPW_div3">
+            {{ orderStateCheck_txt }}
+        </div>
+
+        <div class="chkPW_div4">
+            <div class="chkPW_div4_a">미완료 주문 번호</div>
+            <div class="chkPW_div4_b">
+                {% for list in orderStateCheck %}
+                    <div class="chkPW_div4_b_1">
+                        <a href="{% url 'order_detail' id=list.1  %}">
+                            <p class="chkPW_div4_p1">{{ list.1 }}</p>
+                            <p class="chkPW_div4_p2">{{ list.2 }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        {% else %}
+        <div class="chkPW_div3">
+            오류 발생
+        </div>
+        {% endif %}
+
+        <div class="chkPW_btn">
+            <input id="checkPWButton" class="checkPWButton" type="button" value="확인" onclick="location.href='{% url 'mypage_main' %}'">
+        </div>
+    </div>
+
+{% endblock %}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+
+</body>
+</html>

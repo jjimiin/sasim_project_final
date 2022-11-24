@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 식물 추천 테스트</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/plantTest/test_result_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!-- -->
+
+
+{% block content %}
+
+    <section class="conA">
+        <div class="top_container">
+            <h2>당신에게 어울리는 식물을 발견했어요!</h2>
+            <img src="{%static 'img/recommend/result_tree.png'%}" width="100">
+
+            <div class="commentA">원하는 곳에 식물을 두고 자연을 느껴보세요.</div>
+
+            <section class="keyword">
+                <div class="word">
+                    <div class="word_txt1">Keyword</div>
+                    <div class="word_txt2">
+                        <p>{{ q1_1 }}&nbsp;{{ q1_2 }}&nbsp;{{ q1_3 }}&nbsp;{{ q1_4 }}&nbsp;{{ q1_5 }}</p>
+                        <p>{{ q2_1 }}&nbsp;{{ q2_2 }}&nbsp;{{ q2_3 }}</p>
+                        <p>{{ q3_1 }}&nbsp;{{ q3_2 }}&nbsp;{{ q3_3 }}&nbsp;{{ q3_4 }}&nbsp;{{ q3_5 }}</p>
+                        <p>{{ q4_1 }}&nbsp;{{ q4_2 }}&nbsp;{{ q4_3 }}&nbsp;{{ q4_4 }}&nbsp;{{ q4_5 }}</p>
+                        <p>{{ q5 }}&nbsp;</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <section>
+        <div class="main_container">
+
+            <div class="restart_box">
+                <a href="{% url 'test_main' %}" class="restart_a">다시하기</a>
+            </div>
+
+            <!-- 결과 있을 때 -->
+            <div class="detail_container">
+                <div class="detail_container_t">
+                    <p>추천 식물 리스트</p>
+                </div>
+                <div class="detailA">
+                    <div>{{ testResult_detail_t }}</div>
+                    <div>{{ testResult_detail_t2 }}</div>
+                    <div>{{ testResult_detail_a }}</div>
+                    <div>{{ testResult_detail_p }}</div>
+                    <div>{{ testResult_detail_s }}</div>
+                </div>
+            </div>
+
+
+            <!-- 결과 있을 때 -->
+            {% if testResult %}
+                <div class="plant_list_txt1">당신과 가장 잘 어울리는 식물이에요!</div>
+                <div class="plant_list">
+                    {% for list in testResult %}
+                        <a href="{% url 'plant_detail' id=list.0%}">
+                            <div><img src="{% static list.3 %}" alt="이미지"></div>
+                            <div class="title">{{ list.1 }}</div>
+                            <div class="price">{{ list.2 }}원</div>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+
+            <!-- 결과 있을 때 -->
+            {% if testResult_s %}
+                {% if testResult %}
+                    <div class="plant_list_txt2">이런 식물도 어떠신가요?</div>
+                {% elif testResult %}
+                    <div class="plant_list_txt2">이런 식물은 어떠신가요?</div>
+                {% endif %}
+                <div class="plant_list">
+                    {% for list in testResult_s %}
+                        <a href="{% url 'plant_detail' id=list.0%}">
+                            <div><img src="{% static list.3 %}" width="180" height="180" alt="이미지"></div>
+                            <div class="title">{{ list.1 }}</div>
+                            <div class="price">{{ list.2 }}원</div>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+
+            <!-- 결과 전부 없을 때 -->
+            {% if not testResult_s and not testResult %}
+                <div class="plant_list_txt2">이런 식물은 어떠신가요?</div>
+                <div class="plant_list">
+                    <div>준비중</div>
+                </div>
+            {% endif %}
+
+
+            <!-- 결과 그룹별 정리 -->
+            {% if testResult_s or testResult %}
+                <!-- 관리 빈도 및 난이도 -->
+                {% if not q5_all == '0' %}
+                    <div class="plant_list_txt3">{{ plant_list_txt3 }}</div>
+
+                    {% if result_list_total_1 %}
+                        <div class="plant_list_txt4_1">{{ result_list_total_1_1 }}</div>
+                        <div class="plant_list">
+                            {% for list in result_list_total_1 %}
+                                <a href="{% url 'plant_detail' id=list.0%}">
+                                    <div><img src="{% static list.3 %}" width="180" height="180" alt="이미지"></div>
+                                    <div class="title">{{ list.1 }}</div>
+                                    <div class="price">{{ list.2 }}원</div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    {% if result_list_total_2 %}
+                        <div class="plant_list_txt4_1">{{ result_list_total_1_2 }}</div>
+                        <div class="plant_list">
+                            {% for list in result_list_total_2 %}
+                                <a href="{% url 'plant_detail' id=list.0%}">
+                                    <div><img src="{% static list.3 %}" width="180" height="180" alt="이미지"></div>
+                                    <div class="title">{{ list.1 }}</div>
+                                    <div class="price">{{ list.2 }}원</div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    {% if result_list_total_3 %}
+                        <div class="plant_list_txt4_1">{{ result_list_total_1_3 }}</div>
+                        <div class="plant_list">
+                            {% for list in result_list_total_3 %}
+                                <a href="{% url 'plant_detail' id=list.0%}">
+                                    <div><img src="{% static list.3 %}" width="180" height="180" alt="이미지"></div>
+                                    <div class="title">{{ list.1 }}</div>
+                                    <div class="price">{{ list.2 }}원</div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
+            <!-- 결과 있을 때 -->
+            {% if testResult or testResult_s %}
+            <form id="form__wrap" class="testListForm" name="testListForm" method="POST" action="{% url 'test_result_list' %}">
+                {% csrf_token %}
+                <input type="hidden" value="{{ q1_all }}" name="q1_all">
+                <input type="hidden" value="{{ q1_1_all }}" name="q1_1_all">
+                <input type="hidden" value="{{ q2_all }}" name="q2_all">
+                <input type="hidden" value="{{ q2_1_all }}" name="q2_1_all">
+                <input type="hidden" value="{{ q3_all }}" name="q3_all">
+                <input type="hidden" value="{{ q4_all }}" name="q4_all">
+                <input type="hidden" value="{{ q5_all }}" name="q5_all">
+
+                <div class="resultAll_div">
+                    <a href="{% url 'test_result_list' %}" class="resultAll_btn">더보기</a>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+    </section>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/main/header.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="header">
+
+            <ul>
+                {% if not check %}
+                <li><a href="{% url 'login' %}">로그인&nbsp;</a></li>
+                {% else %}
+                <li><a href="{% url 'logout' %}">로그아웃&nbsp;</a></li>
+                {% endif %}
+
+                <li>|</li>
+
+                {% if not check %}
+                <li><a href="{% url 'terms' %}">&nbsp;회원가입</a></li>
+                {% else %}
+
+                    {% if account.0 == 'sasim' %}
+                        <li><a href="{% url 'mypage_main' %}">&nbsp;관리자페이지&nbsp;</a></li>
+
+                    {% else %}
+                        <li><a href="{% url 'mypage_main' %}">&nbsp;마이페이지&nbsp;</a></li>
+
+                        <li>
+                            <a href="{% url 'plant_cart' %}">
+                                |&nbsp;장바구니&nbsp;
+                            </a>
+                        </li>
+                    {% endif %}
+
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="middleSec">
+            <span class="logo-text">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'img/main/Kium_logo.png' %}">
+                </a>
+                <!--버튼 클릭하면 메인페이지로 이동할 수 있게-->
+            </span>
+
+
+            <!--카테고리-->
+
+            <div class="category">
+
+                <div class="menuBox">
+
+                    <div class="menu" id="menu1">
+                        <h3 class="h3" id="h3_1" style="font-weight:bold; font-size:16px;"><a href="{% url 'plant_list' %}">식물</a></h3>
+                        <ul class="hide" id="hide1">
+                            <li>
+                                <a href="{% url 'plant_list_1' %}">관엽</a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'plant_list_2' %}">다육</a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'plant_list_3' %}">구근</a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'plant_list_4' %}">허브</a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'plant_list_5' %}">선인장</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="menu" id="menu2">
+                        <h3 class="h3" id="h3_2" style="font-weight:bold; font-size:16px;"><a href="{% url 'test_main' %}">추천</a></h3>
+                        <ul class="hide">
+                            <li>
+                                <a href="{% url 'test_introduce' %}">기능소개</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'test_main' %}">추천받기</a>
+                            </li>
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                        </ul>
+                    </div>
+
+                    <div class="menu" id="menu3">
+                        <h3 class="h3" id="h3_3" style="font-weight:bold; font-size:16px;"><a href="{% url 'notice_list' %}">게시판</a></h3>
+                        <ul class="hide" id="hide3">
+                            <li>
+                                <a href="{% url 'notice_list' %}">공지사항</a>
+                            </li>
+
+                            <li><a href="{% url 'contact_list' %}">
+                                1:1문의
+                            </a></li>
+
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                        </ul>
+                    </div>
+
+                    <div class="menu" id="menu4">
+                        <h3 class="h3" id="h3_4" style="font-weight:bold; font-size:16px;"><a href="{% url 'index' %}">키움</a></h3>
+                        <ul class="hide" id="hide4">
+                            <li>
+                                <a href="{% url 'index' %}">키움소개</a>
+                            </li>
+
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!--카테고리 동작-->
+    <script>
+     $(".menuBox").hover(function(){
+        if($(".hide").is(":visible")){
+            $(".hide").stop().slideUp(300);
+        }else{
+            $(".hide").stop().slideDown(300);
+        }
+     });
+    </script>
+    <!--상단바 끝-->
+
+</body>
+</html>

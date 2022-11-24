@@ -1,0 +1,275 @@
+@charset "UTF-8";
+
+/*헤더부분 + 키움 */
+
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+}
+
+@media screen and (min-width:0px) and (max-width:610px) {
+    body {
+        background-color: #87614B;
+    }
+}
+
+
+/*메인이미지 + 텍스트 +버튼*/
+
+.sectionA {
+    margin-top: 110px;
+}
+
+.sectionA img {
+    margin: 0 auto;
+    text-align: center;
+    object-fit: cover;
+
+    width: 100%;
+    min-height: 250px;
+}
+
+
+.mainA {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 370px;
+    background-position: center;
+    background-image: url("img/plant2_1.jpg");
+    background-size: cover;
+    text-decoration: none;
+    margin-top: 180px;
+}
+
+.mainA .title {
+    font-size: 45px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.mainA .content {
+    margin-top: 10px;
+    margin-bottom: 35px;
+    font-size: 17px;
+    color: rgba(235, 250, 200, 0.8);
+}
+
+.container p{
+    color: white;
+    text-align: center;
+    justify-content: center;
+    font-weight: bold;
+    text-shadow: 0 0 7px #55663D;
+}
+
+.mainA .about {
+    margin: 30px 0 0 0;
+}
+
+.mainA .btn {
+    padding: 10px 40px;
+    font-size: 15px;
+    background-color: rgba(218, 242, 170, 0.7);
+    border: rgba(218, 242, 170, 0.7) solid 3px;
+    color: rgba(61, 102, 20, 0.8);
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.mainA .btn:hover{
+    background-color: rgba(191, 227, 113, 0.9);
+    border: rgba(191, 227, 113, 0.4) solid 3px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+/*공지사항*/
+.mainB {
+    height: 50px;
+    background-color: #ECF2E1;
+    border-bottom: 1px solid #BECCA3;
+}
+
+.mainB .containerB {
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.mainB .noticeB{
+    background-color: #608033;
+    padding-top: 15px;
+    padding-bottom: 12px;
+    padding-left: 20%;
+    padding-right: 7%;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ECF2E4;
+}
+
+.mainB .contentB {
+    font-size: 15px;
+    padding-left: 10%;
+}
+
+.mainB .contentB>a {
+    color: #3F4D2E;
+    text-decoration: none;
+}
+.mainB .contentB>a:hover {
+    text-decoration: underline;
+}
+
+.containerB .contentC{
+    float:right;
+}
+
+.fa fa-plus-circle{
+    font-size:2rem;
+}
+
+@media screen and (min-width:0px) and (max-width:790px) {
+    #notice_btn {
+        display: none;
+    }
+}
+
+#notice_btn {
+    float: right;
+
+    margin-top: -10px;
+    padding: 10px 17px;
+    padding-right: 15%;
+    padding-left: 5%;
+
+    line-height: 29px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: #A0B37D;
+    background-color: #EAEAEA;
+
+    border-left: 1px solid #BECCA3;
+}
+
+/*공지사항 끝*/
+
+
+/*베스트 아이템*/
+.containerC {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-bottom: 10px;
+    flex-flow: row wrap;
+}
+
+.containerC .text {
+    margin: 0 50px;
+}
+
+.containerC .text>a {
+    color: black;
+    text-decoration: none;
+}
+
+.containerC .text2 {
+    color: #B3967D;
+}
+
+.containerC h2 {
+    font-size: 17px;
+    margin-bottom: 7px;
+    border-bottom: 2px solid green;
+    padding-bottom: 7px;
+    color: #445936;
+}
+
+.containerC p {
+    font-size: 14px;
+    margin-bottom: 60px;
+}
+
+.mainC {
+    background-color: white;
+}
+
+.mainC .textC img {
+    display: block;
+    margin: 0px auto;
+    padding: 60px 0;
+    width: 30%;
+    min-width: 350px;
+    height: auto;
+}
+
+.mainC img{
+    display: block;
+    margin-bottom: 20px;
+
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+
+    text-align: center;
+}
+/*베스트 아이템 끝*/
+
+
+/*키움 문의하기*/
+.mainD {
+    width: 100%;
+    min-height: 450px;
+
+    background-position: center;
+    background-image: url("img/contact_img.jpg");
+    background-size: cover;
+    object-fit: cover;
+
+    text-decoration: none;
+}
+
+.containerD p{
+    text-align: right;
+    margin-right: 20%;
+}
+
+.containerD .titleD{
+    font-size: 40px;
+    font-weight: bold;
+    padding-top: 120px;
+    margin-bottom: 17px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 5px #4D3936;
+}
+
+.containerD .contentD{
+    font-size: 18px;
+    margin-bottom: 50px;
+    color: rgba(252, 248, 247, 0.9);
+}
+
+.containerD button{
+    padding: 10px 17px;
+
+    opacity: 0.9;
+    font-size: 18px;
+    font-weight: bold;
+    color: #435924;
+    background-color: rgba(220, 237, 197, 0.6);
+
+    border: rgba(255, 255, 255, 0.6) solid 3px;
+    border-radius: 5px;
+}
+
+.containerD button:hover{
+    color: #364D17;
+    background-color: rgba(189, 217, 152, 0.5);
+}
+.containerD button:active{
+    background-color: rgba(141, 179, 89, 0.5);
+}
+/*키움 문의하기 끝*/
+
+

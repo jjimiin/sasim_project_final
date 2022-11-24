@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | DB - 식물 테이블</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/account/userList_style.css' %}" type="text/css"/>
+
+</head>
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!-- -->
+
+
+{% block content %}
+    <div class="conA">
+
+        <form class="modifyForm" method="POST" action="{% url 'admin_plantList_detail' pl_id=plantList_detail.0 %}">
+            {% csrf_token %}
+
+            <section class="Asection">
+                <div class="box1">
+                    <p class="sp1">DB관리</p>
+                    <p class="sp2">식물</p>
+                </div>
+
+                <div class="box2">
+                    <div class="box2_content_title">
+                        <span>ID</span>
+                        <span>{{ plantList_detail.0 }}</span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span>카테고리</span>
+                        <span><input name="category" type="text" class="userModify" placeholder="카테고리" value="{{ plantList_detail.1 }}"style="width: 70px;"></span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span>식물 이름</span>
+                        <span><input name="name" type="text" class="userModify" placeholder="이름" value="{{ plantList_detail.2 }}"></span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span>식물 내용</span>
+                        <span><input name="animal" type="text" class="userModify" placeholder="동물" value="{{ plantList_detail.3 }}" maxlength="1" style="width: 50px;">
+                        <input name="effect" type="text" class="userModify" placeholder="효과" value="{{ plantList_detail.4 }}" maxlength="3" style="width: 50px;">
+                        <input name="place" type="text" class="userModify" placeholder="햇빛" value="{{ plantList_detail.5 }}" maxlength="1" style="width: 50px;">
+                        <input name="size" type="text" class="userModify" placeholder="크기" value="{{ plantList_detail.6 }}" maxlength="1" style="width: 50px;">
+                        <input name="time" type="text" class="userModify" placeholder="난이도" value="{{ plantList_detail.7 }}" maxlength="1" style="width: 50px;">
+                        </span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span>가격</span>
+                        <span><input name="price" type="number" class="userModify" placeholder="가격" value="{{ plantList_detail.8 }}"></span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span>재고</span>
+                        <span> <input name="stock" type="number" class="userModify" placeholder="재고" value="{{ plantList_detail.9 }}"></span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span>대표 이미지 위치</span>
+                        <span><input name="img1" type="text" class="userModify" placeholder="대표 이미지 위치" value="{{ plantList_detail.10 }}"></span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span>상세 이미지 위치</span>
+                        <span><input name="img2" type="text" class="userModify" placeholder="상세 이미지 위치" value="{{ plantList_detail.11 }}"></span>
+                    </div>
+
+                </div>
+            </section>
+
+            <div class="top2">
+                <input id="modifyButton" class="btn btn-primary" type="submit" value="수정">
+                <a href="{% url 'admin_plantList' %}" class="back">목록</a>
+            </div>
+
+        </form>
+    </div>
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

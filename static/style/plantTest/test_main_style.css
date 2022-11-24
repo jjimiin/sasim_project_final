@@ -1,0 +1,225 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+    background-color: #BECC99;
+}
+
+.conA {
+    margin-top: 110px;
+}
+
+/*추천*/
+.test_box {
+    min-height: 110vh;
+    background-image: url("img/plant2.jpg");
+    background-size: cover;
+
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+
+.test_box_top {
+    margin: 0 auto;
+    padding: 30px 0 0 0;
+
+    width: 80%;
+    max-width: 600px;
+
+    border: 3px solid #476629;
+    border-bottom: 3px solid #C0D397;
+    border-radius: 50px 50px 0 0;
+
+    background-color: #8FB36B;
+    text-align: center;
+}
+
+.test_box_top .textA {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4B6629;
+
+    padding: 15px 40px 5px 40px;
+}
+
+.test_box_top .textB {
+    color: #EEF2EB;
+    padding: 5px 30px 40px 30px;
+}
+
+.testForm {
+    background-color: rgba(252, 255, 251, 0.90);
+    text-align: center;
+
+    border: 3px solid #77995C;
+    border-top: none;
+    border-radius: 0 0 50px 50px;
+
+	padding: 5px 0 50px 0;
+    margin: 0 auto;
+
+    width: 80%;
+    max-width: 600px;
+}
+
+.testForm img{
+    padding-top:50px;
+    padding-right:40px;
+    padding-left:40px;
+    padding-bottom:10px;
+}
+
+.box {
+    margin: 0 auto;
+    width: 80%;
+}
+
+#chkBtn0 {
+    margin-top: 30px;
+    padding: 30px 15px;
+
+    border: 2px solid #4D2F1F;
+    border-radius: 5px;
+
+    font-weight: bold;
+    color: #F2EEEB;
+    background-color: #664633;
+}
+#chkBtn0:hover {
+    background-color: #593D2D;
+}
+#chkBtn0:active {
+    background-color: #40281A;
+}
+
+.Question{
+    margin: 40px 25px 25px 25px;
+
+    font-size: 17px;
+    font-weight: bold;
+    text-align: left;
+    color:#5F7B51;
+}
+
+.Answer {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    width: 70%;
+
+    text-align: left;
+    color: #817264;
+}
+
+.Answer + label {
+    position:relative;
+}
+
+.Answer input[type="radio"] {
+    display:none;
+}
+
+.Answer input[type="radio"] + label:before {
+    display: inline-block;
+    content: '';
+    width: 11px;
+    height: 11px;
+    border: 1px solid #7E7770;
+    background-color: #EDE7E3;
+    margin-right:5px;
+}
+
+.Answer input[type="radio"]:checked + label:before{
+    content: '✔';
+    font-size: 23.5px;
+    line-height: 0.2;
+    color: #a88;
+}
+
+.resultButton {
+    width: 80%;
+
+    margin-bottom: 3px;
+    padding: 10px 0;
+
+    font-size: 14px;
+    color: white;
+    background-color: #96795E;
+
+    border: 2px solid #664C33;
+}
+
+
+/* 비회원 이용불가 안내 화면 */
+.noLogin_box {
+    width: 80%;
+    max-width: 600px;
+
+    margin: 0 auto;
+    margin-top: 300px;
+    margin-bottom: 150px;
+    padding: 40px 15px;
+
+    border: 2px solid #6C8040;
+    border-radius: 5px;
+    background-color: #EBF2DA;
+    text-align: center;
+}
+
+.noLogin_box>p {
+    font-weight: bold;
+    color: #566633;
+    margin-bottom: 35px;
+}
+
+.noLogin_box>a {
+    padding: 10px 15px;
+
+    border: 2px solid #805A40;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #F2EBE6;
+    background-color: #8C6B54;
+}
+.noLogin_box>a:hover {
+    text-decoration: underline;
+    background-color: #80624D;
+}
+.noLogin_box>a:active {
+    background-color: #664E3D;
+}
+
+.movePGbtn_box {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+.nextBtn {
+    width: 80%;
+
+    margin-bottom: 3px;
+    padding: 10px 0;
+
+    border: 2px solid #728C38;
+
+    font-size: 14px;
+    color: white;
+    background-color: #81A632;
+}
+
+.prevBtn {
+    width: 80%;
+
+    padding: 10px 0;
+
+    border: 2px solid #B3B3B3;
+
+    font-size: 14px;
+    color: #666666;
+    background-color: #F2F2F2;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 식물 추천 목록</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/shop/plant_list_style.css' %}" type="text/css"/>
+
+</head>
+
+<body {% if not page_obj %}style="background-image: url({%static 'img/recommend/plant2.jpg'%});"{% endif %}>
+
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!-- -->
+
+
+{% block content %}
+
+    <div class="conA">
+
+        {% if page_obj %}
+        <!--    식물    -->
+        <div class="conB">
+            <div class="plant_info_con">
+                <!--    식물 목록    -->
+                {% for all in page_obj %}
+                    <div class="plant_info_con2">
+                        <!--    식물 이미지    -->
+                        <a href="{% url 'plant_detail' id=all.0 %}">
+                            <img class="con2_img" src="{% static all.3 %}" alt="이미지">
+                            <!--    식물 이름    -->
+                            <h2>{{ all.1 }}</h2>
+                        </a>
+                        <!--    식물 가격    -->
+                        <p class="text2">{{ all.2 }}원</p>
+                    </div>
+                {% endfor %}
+                <!-- -->
+            </div>
+        </div>
+        <!---->
+
+
+        <!--  페이지  -->
+        <ul class="pagination">
+            <!-- 이전페이지 -->
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">이전</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+                </li>
+            {% endif %}
+
+            <!-- 페이지리스트 -->
+            {% for page_number in page_obj.paginator.page_range %}
+                {% if page_number == page_obj.number %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            <!-- 다음페이지 -->
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">다음</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                </li>
+            {% endif %}
+        </ul>
+        <!-- 페이징처리 끝 -->
+
+
+        {% else %}
+            <section class="noResult_box">
+                <div class="notxt">
+                    <img src="{%static 'img/recommend/sprout1.png'%}" width="120">
+                    <div class="notxtA">아직 추천을 받으신 적이 없어요!</div>
+                </div>
+
+                <div class="nolink" onclick="location.href='{% url 'test_main' %}' ">
+                    <p class="nolink_p">추천 받으러 가기</p>
+                </div>
+            </section>
+        {% endif %}
+
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+</body>
+</html>

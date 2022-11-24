@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+}
+
+.edit_container1 {
+    text-align: center;
+    margin-top: 160px;
+    margin-bottom: 100px;
+}
+
+.edit_container1 h2 {
+    padding: 20px 55px;
+    margin: 0 15%;
+    margin-bottom: 30px;
+    background-color:#F3FCEE;
+    text-align:left;
+}
+
+/*제목*/
+.post-form label {
+    display: none;
+    font-size: 20px;
+}
+
+.post-form input {
+    border: none;
+    border-bottom: 3px solid #765C44;
+    font-size: 20px;
+    width: 60%;
+    min-width: 400px;
+    height: 50px;
+    padding: 0 20px;
+    margin-bottom: 30px;
+
+    outline-color: rgba(255, 255, 255, 0);
+}
+
+.post-form input:focus {
+    border-color:brown;
+}
+
+/*내용*/
+.post-form textarea {
+    border: 2px solid #D3B8A5;
+    font-size: 17px;
+    width: 60%;
+    min-width: 400px;
+    height: 300px;
+    resize: none;
+    padding: 20px 20px;
+    font-family: inherit;
+
+    outline-color: rgba(200, 200, 200, 1);
+}
+
+.post-form textarea::placeholder {
+    font-family: inherit;
+}
+
+/*버튼*/
+.post-form button {
+    margin:20px;
+    margin-left:59%;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    padding: 8px 10px;
+    background-color: #765C44;
+    border: 1px solid #765C44;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+.post-form button:hover {
+    opacity:0.6;
+}

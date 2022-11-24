@@ -1,0 +1,284 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+}
+
+.conA {
+    margin-top: 100px;
+}
+
+/*result 결과창 + 키워드*/
+.conA {
+    padding: 50px 0;
+    background-image: url("img/forest1.jpg");
+    min-height: 60vh;
+    background-size:cover;
+}
+
+.top_container {
+    width: 80%;
+    max-width: 800px;
+    height: auto;
+
+    margin: 0 auto;
+
+    border:4px solid #66875B;
+    border-radius:40px;
+
+    opacity: 0.93;
+    text-align:center;
+	background-color:#F3FCEE;
+}
+
+.top_container h2 {
+    color:#425344;
+    padding-top:60px;
+    padding-bottom:20px;
+    opacity:1.0;
+}
+
+.top_container img {
+    padding-bottom:20px;
+    opacity:1.0;
+}
+
+.commentA {
+    color:#8FB289;
+    margin-bottom:30px;
+    opacity:1.0;
+}
+
+.keyword {
+    border-top: 1px solid #C5D7A8;
+}
+
+.word {
+    padding-right: 60px;
+    padding-left: 60px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #6C955E;
+    font-size: 18px;
+    opacity: 1.0;
+}
+
+.word_txt1 {
+    color: #5D6D53;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.word_txt2 {
+    margin-top: 12px;
+
+    font-size: 15px;
+}
+
+.word_txt2>p {
+    margin-bottom: 3px;
+}
+
+/*추천 식물 리스트*/
+.detail_container {
+    text-align:center;
+
+    margin: 0 auto;
+    margin-top: 30px;
+
+    width: 60%;
+    min-width: 400px;
+}
+
+.detail_container_t {
+    color: #805B40;
+    background-color: #FAF7F5;
+    font-size:18px;
+    font-weight: bold;
+
+    border-top: 2px solid #805A40;
+    border-bottom: 1px solid #99745C;
+    border-radius: 10px 10px 0 0;
+
+    padding: 20px 0px;
+}
+
+.detailA {
+    padding: 30px 15px;
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+
+    border-bottom: 1px dotted #9FBF86;
+
+    color: #66554D;
+}
+
+.detailA>div {
+    margin-bottom: 10px;
+}
+
+
+/*식물 몇 가지 추천*/
+.plant_list {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+
+    margin-left: 150px;
+    margin-right: 150px;
+
+    text-align: center;
+}
+
+.plant_list_txt_noPl {
+    color: #516633;
+    font-weight: bold;
+}
+
+.plant_list_txt1 {
+    width: 80%;
+    max-width: 900px;
+
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 20px 0;
+
+    text-align: center;
+    font-size: 20px;
+    color: #5A8026;
+    background-color: #EFF2EB;
+}
+
+.plant_list_txt2 {
+    width: 80%;
+    max-width: 900px;
+
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding: 20px 0;
+
+    text-align: center;
+    font-size: 20px;
+    color: #805326;
+    background-color: #F2EFEB;
+}
+
+.plant_list_txt3 {
+    width: 80%;
+    max-width: 900px;
+
+    margin: 0 auto;
+    margin-top: 120px;
+    padding: 20px 0;
+
+    text-align: center;
+    font-size: 20px;
+    color: #5F663D;
+    background-color: #F2EBAA;
+}
+
+.plant_list_txt4_1 {
+    width: 75%;
+    max-width: 800px;
+
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px 0;
+
+    text-align: center;
+    font-size: 18px;
+    color: #66583D;
+    border: 2px solid #B3A17D;
+    border-radius: 5px;
+}
+
+.plant_list a {
+    margin: 0px 25px;
+    margin-bottom: 17px;
+    text-decoration:none;
+}
+
+.plant_list img {
+    margin: 10px;
+    margin-bottom: 7px;
+    border-radius: 10px;
+
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.title {
+    color: #362F2A;
+    margin-bottom: 3px;
+    font-size: 17px;
+}
+
+.price {
+    color:#806B58;
+}
+
+.plant_list > a:nth-of-type(n+5){
+    display:none;
+}
+
+.resultAll_div {
+    text-align: center;
+
+    margin-top: 70px;
+    margin-bottom: 170px;
+}
+
+.resultAll_btn {
+    padding: 8px 15px;
+
+    color: #476629;
+    background-color: white;
+    text-decoration: none;
+
+    border: 2px solid #73994D;
+    border-radius: 5px;
+}
+.resultAll_btn:hover {
+    background-color: #F4F7F0;
+    text-decoration: underline;
+}
+.resultAll_btn:active {
+    background-color: #D2E6B8;
+}
+
+.restart_box {
+    width: 55%;
+    min-width: 300px;
+
+    text-align: right;
+
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.restart_a {
+    padding: 15px 5px;
+    border: 2px solid #805740;
+    border-radius: 5px;
+
+    font-size: 12px;
+    text-decoration: none;
+    color: #F2EEEB;
+    background-color: #805740;
+}
+.restart_a:hover {
+    text-decoration: underline;
+    background-color: #99725C;
+}
+.restart_a:active {
+    text-decoration: underline;
+    color: #4D433D;
+    background-color: #DECFC8;
+}

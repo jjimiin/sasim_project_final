@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 주문 조회</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/shop/order_detail_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!-- 풋터 -->
+
+
+{% block content %}
+
+    <div class="conA">
+
+        <div class="conB">
+
+        <p>주문 번호 : {{ order_list_detail.0.0 }}</p>
+
+        <!--   주문 날짜  -->
+        <p>주문 일자 : {{ order_list_detail.0.15 }}</p>
+
+        </div>
+
+        <div class="conC">
+            주문 상품
+        </div>
+
+
+
+        <!--  for문  -->
+        <div class="conD">
+        {% for list in order_list_detail %}
+
+            <table>
+                <tr>
+                    <td width="26%">
+                        <a href="{% url 'plant_detail' id=list.2 %}">
+                            <img src="{% static list.4 %}" alt="이미지">
+                        </a>
+                    </td>
+
+                    <td width="20%">
+                        <a href="{% url 'plant_detail' id=list.2 %}">
+                            <p>{{ list.3 }}</p>
+                        </a>
+
+                        <!--  단가  -->
+                        <p>{{ list.5 }}원</p>
+                    </td>
+
+                    <td width="30%">
+                        <p>수량</p>
+                        <!--  수량  -->
+                       <p>{{ list.6 }}개</p>
+                    </td>
+
+                    <td>
+                        <p>총 가격</p>
+                        <!--  단가*수량  -->
+                        <p>{{ list.7 }}원</p>
+                    </td>
+                </tr>
+            </table>
+
+        {% endfor %}
+        <!-- for문 종료 -->
+        </div>
+
+
+
+        <!--  배송지 정보  -->
+        <div class="conE">
+            <div class="sectionA"><p>배송지 정보</p></div>
+
+            <!--  수령인  -->
+            <p><span>수령인</span>{{ order_list_detail.0.9 }}</p>
+
+            <!--  전화번호  -->
+            <p><span>전화번호</span>{{ order_list_detail.0.10 }}</p>
+
+            <!--  우편번호  -->
+            <p><span>우편번호</span>{{ order_list_detail.0.11 }}</p>
+
+            <!--  주소  -->
+            <p><span>주소</span> {{ order_list_detail.0.12 }}</p>
+            <!--  상세주소  -->
+            <p><span>상세주소</span>{{ order_list_detail.0.13 }}</p>
+
+            <!--  배송 메모  -->
+            <p><span>배송메모</span>{{ order_list_detail.0.14 }}</p>
+
+        </div>
+        <!--  배송지 정보 끝  -->
+
+
+        <div class="conF">
+            <div class="sectionB"><p>결제 정보</p></div>
+
+                <!--  지불 방식  -->
+                <p><span>결제수단</span>{{ order_list_detail.0.17 }}</p>
+
+                <!--  주문 상태  -->
+                <p><span>결제상태</span><b>{{ order_list_detail.0.16 }}</b></p>
+
+                <!--  if문: 입금 확인 전일 경우: 입금할 계좌 정보 확인 가능  -->
+                {% if order_list_detail.0.16 == '입금 확인 전' %}
+                    <p><span>입금계좌</span>신한은행</p>
+                    <p><span>계좌번호</span>0223802290</p>
+                    <p><span>예금주명</span>키움</p>
+                {% endif %}
+                <!-- if문 종료 -->
+
+            <div class="sectionC">
+                <!--  상품 총 금액 + 배송비  -->
+                <p><span>상품 총 금액</span>{{ order_list_detail_cost.0 }}원</p>
+                <p><span>배송비</span>{{ order_list_detail_cost.1 }}원</p>
+                <!--  총 결제 금액  -->
+                <p><span>총 결제 금액</span><b>{{ order_list_detail_cost.2 }}원</b></p>
+            </div>
+
+        </div>
+
+
+        <!--    주문 취소 작업 부분    -->
+        <form class="cancel_order" method="POST" action="{% url 'cancel_order' %}">
+            {% csrf_token %}
+
+            <!--    사용자한텐 안 보임 / 프론트 작업x    -->
+            <input type="hidden" name="order_id_check" value="{{ order_list_detail.0.0 }}">
+            <!--  -->
+
+
+            <p style="color:red; margin-left:5px; font-size:0.8em;">*결제 완료 또는 입금 확인 후 주문 취소할 경우, 환불까지 최대 1일까지 소요될 수 있습니다.</style></p>
+
+
+            <!--  주문 상태  -->
+            {% if order_list_detail.0.16 == '주문 취소' %}
+                <br><br>
+                <div class="cancelA">
+                    <p>해당 주문은 취소 되었습니다.</p>
+                </div>
+                <Button class="ListButton"><a href="{% url 'confirm_order' %}">주문 목록</a></Button>
+
+            {% elif not order_list_detail.0.16 == '배송 중' or order_list_detail.0.16 == '배송 시작' or order_list_detail.0.16 == '배송 완료' %}
+                <a class="cancelOrderBtn" onclick="showCancelBox()">주문 취소</a>
+                <Button class="ListButton"><a href="{% url 'confirm_order' %}">주문 목록</a></Button>
+
+                <div id="cancelBox" style="display: none;">
+                    <p>해당 주문을 정말로 취소하겠습니까?</p>
+                    <input id="cancelOrderButton" name="cancelOrderButton" class="btn btn-primary" type="submit" value="네">
+                </div>
+            {% endif %}
+        </form>
+        <!--  -->
+
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+
+<script>
+    function showCancelBox(event) {
+        var cancelBox = document.getElementById("cancelBox");
+
+         if(cancelBox.style.display=='none') {
+            cancelBox.style.display = 'block';
+         }
+    }
+</script>
+
+</html>

@@ -1,0 +1,192 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+}
+
+
+/* 1:1문의 타이틀 */
+.conA {
+    margin-top: 160px;
+}
+
+.Stitle {
+    width: 70%;
+    height: 90px;
+    background-color: #EFF6EC;
+    margin: 20px auto;
+}
+
+.Stitle .Sone{
+    color:#49392A;
+    font-size:1.5rem;
+    padding:15px 40px;
+}
+
+.Stitle .Stwo{
+    color:#49392A;
+    font-weight: bold;
+    float:right;
+    font-size:14px;
+    padding-right:12px;
+}
+
+.Stitle .Stwo > a {
+    font-weight: normal;
+    text-decoration: none;
+    color: #49392A;
+}
+.Stitle .Stwo > a:hover {
+    text-decoration: underline;
+}
+
+/*1:1문의 내용*/
+.Cpost {
+    margin: 0px auto;
+    margin-top:50px;
+    justify-content: center;
+    width: 70%;
+}
+
+.Cpost .CpostA {
+    padding: 15px 60px;
+    font-size: 20px;
+    color: #F2EBE6;
+    border-top: 2px solid #5B4C48;
+    background-color: #6C4E3D;
+}
+
+.CpostB {
+    padding: 15px 0px;
+    padding-right: 12px;
+    color: #D9CCC3;
+    float: right;
+    font-size: 15px;
+}
+
+.CpostC p {
+    padding: 40px 60px;
+    padding-bottom: 60px;
+    border-bottom: 2px solid #D9CBC3;
+}
+
+/*답변*/
+
+.Answer{
+    width:70%;
+    margin-left:15%;
+}
+
+.Canswer {
+    font-weight: bold;
+    padding: 25px 0;
+    font-size: 19px;
+    color: #798060;
+    background-color: #F6FAED;
+    margin: 0px auto;
+    justify-content: center;
+}
+.Canswer .Canswer_a {
+    padding: 0 80px;
+}
+
+.CpostD {
+    margin: 0px auto;
+    justify-content: center;
+    border-bottom: 2px solid #B5B594;
+    color: #323330;
+    background-color: #F6FAED;
+    padding-bottom: 50px;
+}
+.CpostD .CpostD_a {
+    padding: 0 80px;
+}
+
+
+.Cbutton a {
+    border-bottom: 2px solid #81997A;
+    color:#5B7454;
+    background-color: #F3F7EB;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight:bold;
+    padding: 7% 0;
+
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.Cbutton a:hover{
+    color: #995F3D;
+    text-decoration: underline;
+    background-color: #DDE6CA;
+}
+
+.List_btn button{
+    margin-top:20px;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    padding: 10px 12px;
+    background-color: #5B7454;
+    border: 2px solid #5B7454;
+    border-radius: 5%;
+    margin-left:75%;
+    margin-bottom: 60px;
+    cursor: pointer;
+}
+.List_btn button:hover {
+    text-decoration: underline;
+    opacity:0.8;
+}
+.List_btn button:active {
+    border: 2px solid #EDF7EB;
+    background-color: #97BF8F;
+    color: #EDF7EB;
+}
+
+.edit_container1 {
+    text-align: center;
+    margin-top: 220px;
+}
+
+.edit_container1 h2 {
+    padding: 20px 0;
+    margin: 0 15%;
+    margin-bottom: 30px;
+    background-color: green;
+}
+
+.post-form label {
+    display: none;
+    font-size: 20px;
+}
+
+.post-form input {
+    border: none;
+    border-bottom: 3px solid brown;
+    font-size: 20px;
+    width: 60%;
+    min-width: 400px;
+    height: 50px;
+    padding: 0 20px;
+    margin-bottom: 30px;
+
+    outline-color: rgba(255, 255, 255, 0);
+}
+
+.post-form textarea {
+    border: 3px solid gray;
+    font-size: 17px;
+    width: 60%;
+    min-width: 400px;
+    height: 300px;
+    resize: none;
+    padding: 20px 20px;
+
+    outline-color: rgba(200, 200, 200, 1);
+}

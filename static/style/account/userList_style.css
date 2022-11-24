@@ -1,0 +1,278 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin: 0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+}
+
+.conA {
+    margin-top: 180px;
+    margin-bottom: 150px;
+}
+/* */
+
+
+/* */
+.userList_txt {
+    margin-bottom: 30px;
+
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #65584D;
+}
+
+.userList_n {
+    width: 70%;
+
+    margin: 10px auto;
+    padding: 15px 25px;
+
+    text-align: center;
+}
+
+.userList_title {
+    display: flex;
+
+    padding: 25px 20px;
+    padding-left: 50px;
+
+    border-bottom: 2px solid #7D6151;
+
+    color: #4D311F;
+}
+
+.userList_title_b {
+    font-weight: bold;
+}
+
+.userList_titleA {
+    display:flex;
+
+    padding: 30px 20px;
+    padding-left: 50px;
+
+    border-bottom: 2px solid #7D6151;
+
+    color:#fff;
+    background-color:#876C5D;
+
+    font-weight:bold;
+}
+
+.userList_title p {
+    width: 300px;
+}
+
+.userList_titleA p {
+    width:300px;
+}
+
+.userList_n a {
+    text-decoration: none;
+    color: black;
+}
+
+.userList_c {
+    background-color: #F9F6F4;
+}
+.userList_c:hover {
+    background-color: #E6DFDA;
+}
+
+/*detail*/
+
+.top2 {
+    padding-top: 50px;
+    padding-bottom: 150px;
+    text-align:center;
+}
+
+#modifyButton {
+    padding: 8px 12px;
+
+    border:1px solid #837470;
+    border-radius: 5px;
+
+    font-size: 15px;
+    color: white;
+    background-color: #734D39;
+}
+
+#modifyButton:hover {
+    text-decoration: underline;
+    background-color: #8C5E46;
+}
+#modifyButton:active {
+    color: #E6DEDA;
+    background-color: #B3846B;
+}
+
+.back {
+    padding: 8px 12px;
+
+    border-radius: 5px;
+    border:1px solid #638040;
+
+    text-decoration: none;
+    font-size: 15px;
+    color: #738C54;
+    background-color: #FFFFFF;
+}
+
+.back:hover {
+    text-decoration: underline;
+    background-color: #DCE6CF;
+}
+.back:active {
+    color: #EEF2E9;
+    background-color: #9BB37D;
+}
+
+.searchBar {
+    width: 85%;
+    margin-top: 50px;
+    text-align: right;
+}
+
+.admin_search_txt {
+    padding: 5px 7px;
+
+    color: #664B3D;
+    outline: none;
+    border: 2px solid #D5D5D5;
+    border-radius: 2px;
+}
+.admin_search_txt:focus {
+    border: 2px solid #74B336;
+}
+
+.admin_search_btn {
+    padding: 6px 12px;
+
+    border: none;
+    border-radius: 2px;
+
+    color: white;
+    background-color: #805540;
+}
+.admin_search_btn:hover {
+    background-color: #99705C;
+}
+.admin_search_btn:active {
+    background-color: #663D29;
+}
+
+.noSearch_txt {
+    padding: 50px 0;
+    padding-bottom: 80px;
+    color: gray;
+}
+
+
+/*detail 새로 추가*/
+.Asection {
+    width: 80%;
+    max-width: 800px;
+    margin:40px auto;
+}
+
+.box1 {
+    background-color: #DDF7A6;
+    height: 150px;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.box1 .sp1 {
+    color: #508040;
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+    padding-top: 35px;
+}
+
+.box1 .sp2 {
+    color: #386629;
+    font-size:2rem;
+    font-weight:bold;
+}
+
+.box2 {
+    background-color: #F4F0EC;
+    height:auto;
+    padding:30px 50px;
+}
+
+.box2_content_title {
+    background-color:#fff;
+    padding:15px 30px;
+    border-radius:50px;
+    display:flex;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.box2_content {
+    background-color:#fff;
+    padding:15px 30px;
+    border-radius:50px;
+    display:flex;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.box2_content_title > span:nth-child(1) {
+    flex:1;
+    min-width: 150px;
+
+    border-radius:30px;
+    background-color: #508040;
+    color:#fff;
+    font-weight:bold;
+    padding:5px 0px;
+}
+
+.box2_content > span:nth-child(1) {
+    flex:1;
+    min-width: 150px;
+
+    color: #508040;
+    font-weight:bold;
+    padding:5px 0px;
+}
+
+.box2_content > span:nth-child(2) {
+    flex:2;
+    color: #4D3B36;
+    font-weight:bold;
+    padding:3px 0px;
+}
+
+.box2_content_title > span:nth-child(2) {
+    flex:2;
+    font-weight:bold;
+    color: #4D3B36;
+    padding:3px 0px;
+}
+
+.box2_content .bottom {
+    flex:2;
+    font-weight: bold;
+    color: #4D3B36;
+}
+
+.box2_content input {
+    text-align: center;
+
+    outline: none;
+    border: none;
+    font-weight:bold;
+    color: #4D3B36;
+
+    width: 80%;
+    padding-bottom:5px;
+    border-bottom: 2px solid #B3937D;
+}

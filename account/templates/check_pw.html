@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 마이페이지 - 비밀번호 확인</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/mypage/profile_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!---->
+
+
+{% block content %}
+
+    <div class="conA">
+
+        {% if sort == 1 %}
+        <h3 class="chkPW_h3">회원정보 수정 - 비밀번호 확인</h3>
+        {% elif sort == 2 %}
+        <h3 class="chkPW_h3">회원 탈퇴 - 비밀번호 확인</h3>
+        <div class="chkPW_div1">비밀번호 입력 후 확인 버튼 클릭 시, 회원 탈퇴가 이루어집니다.</div>
+        <div class="chkPW_div2">회원탈퇴 후 탈퇴한 회원의 사이트 이용 내역 조회 또는 문의가 불가능합니다.</div>
+        {% endif %}
+
+
+        {% if sort == 1 %}
+        <form class="checkPWForm" method="POST" action="{% url 'check_pw' sort=1%}">
+        {% elif sort == 2 %}
+        <form class="checkPWForm" method="POST" action="{% url 'check_pw' sort=2%}">
+        {% endif %}
+
+            {% csrf_token %}
+
+            <!--  안보임 / 프론트 작업x  -->
+            <input id="chk_ok" class="chk_ok" name="chk_ok" type="hidden" value="chk_ok">
+            <!-- -->
+
+            <table class="user_info_box">
+
+                {% if match_error %}
+                <tr>
+                    <td class="matchPW_error" colspan="2">
+                        {{ match_error }}
+                    </td>
+                </tr>
+                {% endif %}
+
+                <tr>
+                    <td class="tlb_l">
+                        아이디:
+                    </td>
+                    <td class="tlb_r">
+                        {{ id_protect }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="tlb_l">
+                        비밀번호:
+                    </td>
+                    <td class="tlb_r">
+                        <input type="password" name="chk_password" placeholder="비밀번호를 입력해주세요." value="" required>
+                    </td>
+
+                </tr>
+            </table>
+
+            <div class="chkPW_btn">
+                <input id="checkPWButton" class="checkPWButton" type="submit" value="확인">
+            </div>
+
+        </form>
+        </form>
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+</body>
+</html>

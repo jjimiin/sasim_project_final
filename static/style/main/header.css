@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+/*헤더부분 + 키움 */
+
+* {
+    margin: 0;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    background-color: #F5FAED;
+    border-bottom: 2px solid #C5DA99;
+}
+
+/*헤더 - 로그인+로그아웃+마이페이지+회원가입란 */
+.header {
+    font-size: 12px;
+    font-weight:bold;
+    display:inline-block;
+    float:right;
+}
+
+.header ul {
+    list-style:none;
+    text-align:right;
+
+    padding-right:50px;
+    padding-top:10px;
+    font-size:11px;
+}
+
+.header ul>li {
+    display:inline-block;
+    text-align:center;
+}
+
+.header li a {
+    list-style: none;
+    text-decoration: none;
+    color: #6A804D;
+    width:30px;
+}
+
+.middleSec {
+    position: relative;
+    display:flex;
+    padding-left:30%;
+    z-index: -100;
+}
+
+/*로고 란*/
+
+.logo-text > a > img {
+    width: 80px;
+    padding: 12px 0px;
+    margin-right:15%;
+}
+
+/*카테고리*/
+.category {
+    width: 80%;
+    min-width: 200px;
+    text-align: center;
+    padding-top:10px;
+    z-index: -10;
+}
+
+.category a {
+    text-decoration: none;
+    color:#806459;
+}
+
+.category .menuBox {
+    display: flex;
+    padding-bottom:5px;
+}
+
+.category .menu {
+    width:120px;
+}
+
+.category .menu:hover {
+    border-bottom: 3px solid green;
+}
+
+.menu h3 {
+    line-height: 100px;
+    margin-bottom: -5px;
+}
+
+.menu h3>a {
+    text-align: center;
+    color: #59443A;
+}
+
+.menu .hide{
+    display: none;
+}
+
+.category ul{
+    list-style: none;
+
+    margin-bottom: 7px;
+    padding: 10px 0;
+
+    font-size: 15px;
+    color:#806459;
+}
+
+.category li {
+    padding: 3px 0;
+}
+
+.category li>a {
+    font-weight: bold;
+    color: #806459;
+}
+.category li>a:hover {
+    color: #A5BF69;
+}
+
+/* 카테고리 부문 종료 */
+/* 헤더 종료 */

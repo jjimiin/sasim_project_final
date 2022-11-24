@@ -1,0 +1,251 @@
+@charset "UTF-8";
+
+/* 공통적용 */
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+}
+
+.conA {
+    margin: 0 80px;
+    margin-top: 195px;
+}
+/**/
+
+/* 식물 세부 카테고리 */
+.plant_category {
+	width: 100%;
+	height: auto;
+	margin: 60px auto;
+
+    display: flex;
+}
+
+.plant_category > .plant_category_main, .main_li {
+    list-style: none;
+
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.plant_category_main {
+    width: 100%;
+	height: 70px;
+	margin: 0 auto;
+	margin-right: 30px;
+
+    flex-flow: row wrap;
+}
+
+.plant_category_main>.main_a {
+	width: 90px;
+	height: 30px;
+	line-height: 30px;
+	float: left;
+	margin-right: 2px;
+
+    border: 1px solid #9AB37D;
+
+	font-size: 12px;
+	text-align: center;
+    color: #879973;
+    background: white;
+    text-decoration: none;
+}
+
+.plant_category_main>.main_a:hover {
+    color: white;
+    background: #9AB37D;
+}
+/**/
+
+
+/* 검색 바 */
+.search_plant {
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: right;
+    max-width: 1200px;
+}
+
+.search_content {
+    outline: none;
+    border: 2px solid #EDDFD5;
+    border-right: none;
+    border-radius: 3px 0 0 3px;
+    font-size: 12px;
+    color: #73645C;
+
+    padding: 7px 10px;
+}
+.search_content:focus {
+    border: 2px solid #CC987A;
+    border-right: none;
+}
+
+.searchBtn {
+    border: 2px solid #A0B374;
+    border-radius: 0 3px 3px 0;
+    border-left: none;
+    background-color: #B0CC70;
+    color: #F5F7F0;
+
+    padding: 5px 10px;
+
+    float: right;
+}
+.searchBtn:hover {
+    background-color: #A8BF73;
+}
+/**/
+
+
+/* */
+.conB {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 1370px;
+
+    margin: 0 auto;
+    margin-bottom: 100px;
+}
+
+.plant_info_con {
+    margin: 0 140px;
+    padding: 0 50px;
+    padding-top: 50px;
+
+    border-top: 2px solid #CCA38F;
+
+    display: flex;
+    text-align: center;
+    flex-flow: row wrap;
+
+}
+
+.plant_info_con .plant_info_con2 {
+    margin: 0 30px;
+}
+
+.con2_img {
+    display: block;
+    margin-bottom: 7px;
+
+    width: 263px;
+    height: 263px;
+    object-fit: cover;
+
+    border-radius: 5px;
+}
+
+.plant_info_con .plant_info_con2>a {
+    color: black;
+    text-decoration: none;
+}
+
+.plant_info_con .text2 {
+    color: #B3967D;
+}
+
+.plant_info_con h2 {
+    font-size: 17px;
+    margin-bottom: 7px;
+    border-bottom: 2px solid #ABC965;
+    padding-bottom: 7px;
+    color: #445936;
+}
+
+.plant_info_con p {
+    font-size: 14px;
+    margin-bottom: 60px;
+}
+
+
+/*페이징 처리*/
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    list-style: none;
+}
+
+.pagination li{
+    margin:0px 20px;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: black;
+}
+.pagination a:hover {
+    text-decoration: underline;
+    color: green;
+}
+
+
+/* test_result_list.html */
+.noResult_box {
+    margin: 0 auto;
+    margin-bottom: 130px;
+    padding: 35px 10px;
+
+    width: 80%;
+    max-width: 600px;
+
+    text-align: center;
+}
+
+.notxt {
+    margin: 0 auto;
+    padding: 30px 0px;
+
+    width: 90%;
+    background-color: #6F9945;
+
+    border: 3px solid #6B993D;
+    border-bottom: none;
+    border-radius: 50px 50px 0 0;
+}
+
+.notxtA {
+    margin-top: 17px;
+
+    color: #F4F7F0;
+    font-size: 17px;
+    font-weight:bold;
+}
+
+.nolink{
+    margin: 0 auto;
+    padding: 40px 0px;
+    padding-bottom: 50px;
+
+    width: 90%;
+    color: #E6DBD3;
+    background-color: rgba(115, 82, 63, 0.95);
+
+    border: 3px solid #B37759;
+    border-top: none;
+    border-radius: 0 0 50px 50px;
+}
+
+.nolink_p {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nolink:hover {
+    background-color: #593D2D;
+}
+.nolink:active {
+    background-color: #40281A;
+}

@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+    background-color: #f9f7f6;
+}
+
+/*  */
+.conA {
+    margin-top: 110px;
+}
+
+
+.termsForm .h2_1 {
+    text-align: center;
+    color: #6F804D;
+    background-color: #EFF2EB;
+
+    padding: 40px 0;
+    padding-top: 50px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.join_form {
+    margin-bottom: 130px;
+    margin-top: 30px;
+}
+
+.input_chkAll {
+    text-align: center;
+
+    color: #B35959;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.terms_bx {
+    margin: 50px auto;
+    width: 500px;
+
+    justify-content: center;
+}
+
+.terms_box {
+    border: 1px solid gray;
+}
+
+.input_chk {
+    color: #785D5D;
+    font-size: 13pt;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+.input_chk #red {
+    font-size: 10pt;
+    color: #CC3D3D;
+}
+.input_chk #green {
+    font-size: 10pt;
+    color: #9FC93C;
+}
+
+.article {
+    overflow: auto;
+    height: 124px;
+
+    padding: 26px 19px;
+
+    color: #665C57;
+    background-color: white;
+    font-size: 10pt;
+    text-align: left;
+}
+.article b {
+    color: #747474;
+    background-color: white;
+}
+.article h2 {
+    background-color: white;
+    margin: 15px 0 -10px 0;
+}
+
+.join_form .error {
+    font-size: 12px;
+    color: #FF4848;
+    text-align: center;
+    margin: 0 0 30px 0;
+}
+
+
+.btn_box{
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+
+    max-width: 700px;
+}
+
+
+.btn_box a {
+    border: 1px solid #747474;
+    background: #EAEAEA;
+    color: #4C4C4C;
+    outline: none;
+    text-decoration: none;
+
+    padding: 11.6px 30px 14.8px 30px;
+}
+
+.btn_box a:hover {
+    background: #CCCCCC;
+    color: white;
+}
+
+.btn_box a:active {
+    background: #BDBDBD;
+    color: white;
+}
+
+.btn_box input {
+    width: 50%;
+    height: 50px;
+    border: 1px solid #806C59;
+    background: #99734D;
+    color: white;
+    outline: none;
+}
+
+.btn_box input:hover {
+    background: #80674D;
+    color: white;
+}
+
+.btn_box input:active {
+    background: #664D33;
+    color: white;
+}

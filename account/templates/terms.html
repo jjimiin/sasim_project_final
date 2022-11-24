@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 약관 동의</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/account/terms_style.css' %}" type="text/css"/>
+
+</head>
+
+<script>
+    function chkAll(event) {
+        const query1 = 'input[name="chk1"]';
+        const query2 = 'input[name="chk2"]';
+        const selectedEls1 = document.querySelectorAll(query1);
+        const selectedEls2 = document.querySelectorAll(query2);
+
+        if (event.target.checked) {
+            selectedEls1.forEach((el) => {
+                el.checked = true;
+            });
+            selectedEls2.forEach((el) => {
+                el.checked = true;
+            });
+        } else {
+            selectedEls1.forEach((el) => {
+                el.checked = false;
+            });
+            selectedEls2.forEach((el) => {
+                el.checked = false;
+            });
+        }
+    }
+</script>
+<body>
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+
+
+{% block content %}
+
+    <div class="conA">
+
+        <form class="termsForm" name="termsForm" method="POST" action="{% url 'terms' %}">
+            {% csrf_token %}
+            <h2 class="h2_1">회원가입 약관 동의</h2>
+
+            <div class="join_form">
+
+                {% if agree_error %}
+                <p class="error">{{ agree_error }}</p>
+                {% endif %}
+
+                <div class="input_chkAll">
+                    <input type="checkbox" id="check_all" value="All" onclick="chkAll(event)">
+                    <label for="check_all">전체 동의</label>
+                </div>
+
+                <div class="terms_bx">
+                    <div class="input_chk">
+
+                        <input type="checkbox" class="chkbtn" id="check_1" name="chk1" value="1">
+                        <label for="check_1">키움 이용약관 동의</label>
+
+                        <span id="red">(필수)</span>
+                    </div>
+                    <div class="terms_box" tabindex="0" id="divService">
+                        <div class="article">
+                            <b>키움에 오신 것을 환영합다.</b>
+                            <h2>제1조 목적</h2>
+                            <br>
+                            본 이용약관은 “키움” 서비스의 이용조건과 운영에 관한 제반 사항 규정을 목적으로 합니다.
+                            <br><br>
+                            <b>제2조 용어의 정의</b>
+                            <br>
+                            본 약관에서 사용되는 주요한 용어의 정의는 다음과 같습니다.
+                            <br>
+                            1. 회원 : 사이트의 약관에 동의하고 개인정보를 제공하여 회원등록을 한 자로서, 사이트와의 이용계약을 체결하고 사이트를 이용하는 이용자를 말합니다.
+                            <br>
+                            2. 이용계약 : 사이트 이용과 관련하여 사이트와 회원간에 체겨 하는 계약을 말합니다.
+                            <br>
+                            3.회원 아이디(이하 “ID”) : 회원의 식별과 회원의 서비스 이용을 위하여 회원별로 부여하는 고유한 문자와 숫자의
+                            조합을 말합니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="terms_bx">
+                    <div class="input_chk">
+
+                        <input type="checkbox" class="chkbtn" id="check_2" name="chk2" value="1">
+                        <label for="check_2">개인정보 수집 및 이용 동의</label>
+
+                        <span id="red">(필수)</span>
+                    </div>
+                    <div class="terms_box" tabindex="0" id="divService2">
+                        <div class="article">
+                            <h2>개인정보 수집목적 및 이용목적</h2>
+                            <br><br>
+                            <b>(1) 홈페이지 회원 가입 및 관리</b><br>
+                            회원 가입 의사 확인, 회원제 서비스 제공에 따른 본인 식별 인증, 회원자격 유지 관리, 제한적 본인확인제 시행에
+                            따른 본인확인, 서비스 부정 이용 방지, 만 14세 미만 아동의 개인정보 처리시 법정대리인의 동의 여부 확인, 각종
+                            고지 통지, 고충 처리 등의 목적
+                            <br><br>
+                            <b>(2) 재화 또는 서비스 제공</b><br>
+                            물품 배송, 서비스 제공, 계약서 청구서 발송, 콘텐츠 제공, 맞춤 서비스 제공, 본인인증, 연령인증, 요금 결제 및
+                            청산, 채권추심 등의 목적
+                            <br><br>
+                            <b>(3) 고충 처리</b><br>
+                            민원인의 신원 확인, 민원사항 확인, 사실조사를 위한 연락 및 통지, 처리 결과 통보 등
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn_box">
+
+                    <a class="joinBtn" href="{% url 'home' %}">취소</a>
+
+                    <input id="agreeBtn" class="btn btn-primary" type="submit" value="확인">
+
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

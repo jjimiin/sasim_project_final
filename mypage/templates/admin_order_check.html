@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 관리자 - 주문 확인</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/mypage/profile_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!---->
+
+
+{% block content %}
+
+    <div class="conA">
+
+        <!--   무통장입금 주문 입금 확인   -->
+        {% if sort == 1 %}
+        <form class="orderCheckForm" method="POST" action="{% url 'admin_order_check' sort=1 %}">
+            {% csrf_token %}
+
+            <div class="ocfONE">
+                <img src="{%static 'img/mypage/무통장입금확인.png'%}" width="100">
+            <p>무통장 주문<br>입금 확인</p>
+            </div>
+
+            <div class="ocfTWO">
+            <!--    아이디 검색창    -->
+            <input type="text" name="admin_search_mb_id" value="" placeholder="아이디를 입력하세요.">
+            <input name="checkBtn" class="btn btn-primary" type="submit" value="검색">
+            <!-- -->
+            </div>
+
+
+            <!--   기본 / 아이디 검색 결과가 있을 경우   -->
+            {% if not result_null %}
+            <div class="thList">
+                <span></span>
+                <span>주문 번호</span>
+                <span>회원 ID</span>
+                <span>주문 날짜</span>
+                <span>확인 상태</span>
+            </div>
+
+            <div class="checkTable">
+                {% for list in order_list_admin %}
+                <table>
+                    <tr>
+                        <td> <input type="checkbox" name="admin_order_id" value="{{ list.0 }}"> </td>
+                        <td><span>{{ list.0 }}</span> <!-- 주문 id --></td>
+                        <td><span>{{ list.1 }}</span> <!-- 회원 id --></td>
+                        <td><span>{{ list.9 }}</span> <!-- 주문 날짜 --></td>
+                        <td><span>{{ list.10 }}</span> <!-- 주문 상태 --></td>
+                    </tr>
+                </table>
+
+                {% endfor %}
+                </div>
+
+                <!--  버튼  -->
+                <div class="modify_btn">
+
+                    <!--   '입금 확인'   -->
+                    <input name="checkBtn" class="btn btn-primary" type="submit" value="입금 확인">
+                    <!-- -->
+
+                    <!--   '주문 취소'   -->
+                    <input name="checkBtn" class="btn btn-primary" type="submit" value="주문 취소">
+                    <!-- -->
+
+                </div>
+                <!-- 버튼 끝 -->
+            <!-- -->
+
+            <!--   아이디 검색 결과가 없을 경우   -->
+            {% elif result_null %}
+                <!--   '검색 결과가 없습니다.' 문구   -->
+                {{ result_null }}
+            <!-- -->
+
+            {% endif %}
+        </form>
+        <!-- -->
+
+
+        <!--   회원 주문 관리   -->
+        {% elif sort == 2 %}
+        <form class="orderCheckForm" method="POST" action="{% url 'admin_order_check' sort=2 %}">
+            {% csrf_token %}
+            <div class="ocfONE">
+                <img src="{%static 'img/mypage/주문내역.png'%}" width="100">
+            <p>회원 주문 확인</p>
+            </div>
+
+            <div class="ocfTWO">
+            <!--    아이디 검색창    -->
+            <input type="text" name="admin_search_mb_id" value="" placeholder="아이디를 입력하세요.">
+            <input name="checkBtn" class="btn btn-primary" type="submit" value="검색">
+            <!-- -->
+            </div>
+
+            <!--   기본 / 아이디 검색 결과가 있을 경우   -->
+            {% if not result_null %}
+
+            <div class="thList2">
+                <span></span>
+                <span>주문 번호</span>
+                <span>회원 ID</span>
+                <span>주문 날짜</span>
+                <span>주문 상태</span>
+            </div>
+
+            <div class="checkTable">
+                {% for list in order_list_admin %}
+                <table>
+                    <tr>
+
+                        <td><input type="checkbox" name="admin_order_id" value="{{ list.0 }}"></td>
+
+                        <td><span>{{ list.0 }}</span> <!-- 주문 id --></td>
+                        <td><span>{{ list.1 }}</span> <!-- 회원 id --></td>
+                        <td><span>{{ list.9 }}</span> <!-- 주문 날짜 --></td>
+                        <td><span>{{ list.10 }}</span> <!-- 주문 상태 --></td>
+
+                    </tr>
+                </table>
+                {% endfor %}
+            </div>
+
+                <!--  버튼  -->
+                <div class="modify_btn">
+
+                    <!--   '주문 취소'   -->
+                    <input name="checkBtn" class="btn btn-primary" type="submit" value="주문 취소">
+                    <!-- -->
+
+                    <!--   '환불 완료'   -->
+                    <input name="checkBtn" class="btn btn-primary" type="submit" value="환불 완료">
+                    <!-- -->
+
+                </div>
+                <!-- 버튼 끝 -->
+            <!-- -->
+
+            <!--   아이디 검색 결과가 없을 경우   -->
+            {% elif result_null %}
+                <!--   '검색 결과가 없습니다.' 문구   -->
+                {{ result_null }}
+            <!-- -->
+
+            {% endif %}
+
+        </form>
+        <!-- -->
+
+        {% endif %}
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 식물 추천 테스트</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/plantTest/test_main_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!-- -->
+
+<script>
+    function showQ1_1(event) {
+        var chkBtn1 = document.getElementById("chkBtn1");
+
+        var noBtn = document.getElementById("noBtn1");
+        $(noBtn).hide();
+
+         if(chkBtn1.style.display=='none') {
+            chkBtn1.style.display = 'block';
+         }
+    }
+    function showQ1_2(event) {
+        var chkBtn2 = document.getElementById("chkBtn2");
+
+        var noBtn = document.getElementById("noBtn1_1");
+        $(noBtn).hide();
+
+         if(chkBtn2.style.display=='none') {
+            chkBtn2.style.display = 'block';
+         }
+    }
+
+    function showQ2_1(event) {
+        var chkBtn5 = document.getElementById("chkBtn5");
+
+        var noBtn = document.getElementById("noBtn2");
+        $(noBtn).hide();
+
+         if(chkBtn5.style.display=='none') {
+            chkBtn5.style.display = 'block';
+         }
+    }
+    function showQ2_2(event) {
+        var chkBtn7 = document.getElementById("chkBtn7");
+
+        var noBtn = document.getElementById("noBtn2_1");
+        $(noBtn).hide();
+
+         if(chkBtn7.style.display=='none') {
+            chkBtn7.style.display = 'block';
+         }
+    }
+
+    function showQ3(event) {
+        var chkBtn = document.getElementById("chkBtn9");
+
+        var noBtn = document.getElementById("noBtn3");
+        $(noBtn).hide();
+
+         if(chkBtn.style.display=='none') {
+            chkBtn.style.display = 'block';
+         }
+    }
+    function showQ4(event) {
+        var chkBtn = document.getElementById("chkBtn11");
+
+        var noBtn = document.getElementById("noBtn4");
+        $(noBtn).hide();
+
+         if(chkBtn.style.display=='none') {
+            chkBtn.style.display = 'block';
+         }
+    }
+    function showQ5(event) {
+        var resultButton = document.getElementById("resultButton");
+
+        var noBtn = document.getElementById("noBtn7");
+        $(noBtn).hide();
+
+         if(resultButton.style.display=='none') {
+            resultButton.style.display = 'block';
+         }
+    }
+
+
+    function prevPG1(event) {
+        var con1 = document.getElementById("box_Q1");
+        var con1_1 = document.getElementById("box_Q1_1");
+        var con2 = document.getElementById("box_Q2");
+        var con2_1 = document.getElementById("box_Q2_1");
+        var con3 = document.getElementById("box_Q3");
+        var con4 = document.getElementById("box_Q4");
+        var con5 = document.getElementById("box_Q5");
+        var con6 = document.getElementById("box_Q6");
+        var con7 = document.getElementById("box_Q7");
+
+         if(con1_1.style.display=='block') {
+            con1_1.style.display = 'none';
+            con1.style.display = 'block';
+         } else if(con2.style.display=='block') {
+            con2.style.display = 'none';
+            con1.style.display = 'block';
+         } else if(con2_1.style.display=='block') {
+            con2_1.style.display = 'none';
+            con2.style.display = 'block';
+         } else if(con3.style.display=='block') {
+            con3.style.display = 'none';
+            con2.style.display = 'block';
+         } else if(con4.style.display=='block') {
+            con4.style.display = 'none';
+            con3.style.display = 'block';
+         } else if(con5.style.display=='block') {
+            con5.style.display = 'none';
+            con4.style.display = 'block';
+         } else if(con6.style.display=='block') {
+            con6.style.display = 'none';
+            con5.style.display = 'block';
+         } else if(con7.style.display=='block') {
+            con7.style.display = 'none';
+            con6.style.display = 'block';
+         }
+    }
+
+
+    function nextPG0(event) {
+        var con0 = document.getElementById("box_start");
+        var con1 = document.getElementById("box_Q1");
+
+        $(con0).hide();
+        $(con1).show();
+    }
+
+    function nextPG1(event) {
+        var con1 = document.getElementById("box_Q1");
+        var query1 = document.getElementById("aw1");
+        var con1_1 = document.getElementById("box_Q1_1");
+        var con2 = document.getElementById("box_Q2");
+
+        if (query1.checked == true) {
+            $(con1).hide();
+            $(con1_1).show();
+
+        } else {
+            $(con1).hide();
+            $(con2).show();
+        }
+    }
+
+
+    function nextPG1_2(event) {
+        var con1_1 = document.getElementById("box_Q1_1");
+        var con2 = document.getElementById("box_Q2")
+
+        $(con1_1).hide();
+        $(con2).show();
+    }
+
+
+    function nextPG2(event) {
+        var con2 = document.getElementById("box_Q2");
+        var query2 = document.getElementById("aw3");
+        var con2_1 = document.getElementById("box_Q2_1");
+        var con3 = document.getElementById("box_Q3");
+
+        if (query2.checked == true) {
+            $(con2).hide();
+            $(con2_1).show();
+        } else {
+            $(con2).hide();
+            $(con3).show();
+        }
+    }
+
+    function nextPG2_2(event) {
+        var con2_1 = document.getElementById("box_Q2_1");
+        var con3 = document.getElementById("box_Q3");
+
+        $(con2_1).hide();
+        $(con3).show();
+    }
+
+
+    function nextPG3(event) {
+        var con3 = document.getElementById("box_Q3");
+        var con3_1 = document.getElementById("box_Q3_1");
+        var con4 = document.getElementById("box_Q4");
+
+        $(con3).hide();
+        $(con4).show();
+    }
+
+    function nextPG4(event) {
+        var con4 = document.getElementById("box_Q4");
+        var con4_1 = document.getElementById("box_Q4_1");
+        var con5 = document.getElementById("box_Q5");
+
+        $(con4).hide();
+        $(con5).show();
+    }
+
+    function nextPG5(event) {
+        var con5 = document.getElementById("box_Q5");
+        var con5_1 = document.getElementById("box_Q5_1");
+        var con6 = document.getElementById("box_Q6");
+
+        $(con5).hide();
+        $(con6).show();
+    }
+
+    function nextPG6(event) {
+        var con6 = document.getElementById("box_Q6");
+        var con6_1 = document.getElementById("box_Q6_1");
+        var con7 = document.getElementById("box_Q7");
+
+        $(con6).hide();
+        $(con7).show();
+    }
+
+</script>
+{% block content %}
+
+    <div class="conA">
+
+        {% if account %}
+        <section class="test_box">
+
+            <div class="test_box_top">
+                <img src="{%static 'img/recommend/plant_icon.png'%}" width="70">
+                <div class="textA">식물 추천</div>
+                <div class="textB">당신에게 맞는 식물을 찾아보세요.</div>
+            </div>
+
+
+            <form class="testForm" name="testForm" method="POST" action="{% url 'test_main' %}">
+                {% csrf_token %}
+
+                <div class="box" id="box_start">
+                    <div class="start" id="start">
+                        <div id="chkBtn0" onclick="nextPG0(event)">시작하기</div>
+                    </div>
+                </div>
+
+                <div class="box" id="box_Q1" hidden>
+                    <div class="Question">Q1. 식물을 길러본 적이 있나요?</div>
+                    <div class="Answer" id="A1">
+                        <input type="radio" name="q1" value="Y" id="aw1" onclick="showQ1_1(event)" required><label for="aw1">네</label>
+                        <br><br>
+                        <input type="radio" name="q1" value="N" id="aw2" onclick="showQ1_1(event)"><label for="aw2">아니요</label>
+                    </div>
+
+                    <div class="movePGbtn_box">
+                        <div id="noBtn1" class="nextBtn" style="opacity: 0.5;">다음</div>
+                        <div id="chkBtn1" class="nextBtn" onclick="nextPG1(event)" style="display: none;">다음</div>
+                    </div>
+
+                </div>
+
+                <div class="box" id="box_Q1_1" hidden>
+                    <div class="Question">Q1-1. 기르기 까다로운 식물을 얼마나 길러보셨나요?</div>
+                    <div class="Answer" id="A1-1">
+                        <input type="radio" name="q1_1" value="5" id="aw1_1" onclick="showQ1_2(event)"><label for="aw1_1">매우 많이</label>
+                        <br><br>
+                        <input type="radio" name="q1_1" value="4" id="aw1_2" onclick="showQ1_2(event)"><label for="aw1_2">많이</label>
+                        <br><br>
+                        <input type="radio" name="q1_1" value="3" id="aw1_3" onclick="showQ1_2(event)"><label for="aw1_3">보통</label>
+                        <br><br>
+                        <input type="radio" name="q1_1" value="2" id="aw1_4" onclick="showQ1_2(event)"><label for="aw1_4">적음</label>
+                    </div>
+
+
+                    <div class="movePGbtn_box">
+                        <div id="noBtn1_1" class="nextBtn" style="opacity: 0.5;">다음</div>
+                        <div id="chkBtn2" class="nextBtn" onclick="nextPG1_2(event)" style="display: none;">다음</div>
+                        <div id="chkBtn3" class="prevBtn" onclick="prevPG1(event)" style="display: block;">이전</div>
+                    </div>
+                </div>
+
+                <div class="box" id="box_Q2" hidden>
+                    <div class="Question">Q2. 식물을 기를 공간에서 반려동물을 키우거나 데려올 예정이신가요?</div>
+                    <div class="Answer" id="A2">
+                        <input type="radio" name="q2" value="Y" id="aw3" onclick="showQ2_1(event)" required><label for="aw3">네</label>
+                        <br><br>
+                        <input type="radio" name="q2" value="N" id="aw4" onclick="showQ2_1(event)"><label for="aw4">아니요</label>
+                    </div>
+
+
+                    <div class="movePGbtn_box">
+                        <div id="noBtn2" class="nextBtn" style="opacity: 0.5;">다음</div>
+                        <div id="chkBtn5" class="nextBtn" onclick="nextPG2(event)" style="display: none;">다음</div>
+                        <div id="chkBtn4" class="prevBtn" onclick="prevPG1(event)" style="display: block;">이전</div>
+                    </div>
+                </div>
+
+                <div class="box" id="box_Q2_1" hidden>
+                    <div class="Question">Q2-1. 동물이 식물에 가까이 가지 않도록 잘 관리할 자신이 있나요?</div>
+                    <div class="Answer" id="A2_1">
+                        <input type="radio" name="q2_1" value="3" id="aw3_1" onclick="showQ2_2(event)"><label for="aw3_1">할 수 있다</label>
+                        <br><br>
+                        <input type="radio" name="q2_1" value="4" id="aw3_2" onclick="showQ2_2(event)"><label for="aw3_2">하겠지만 잘 할 수 있을지 모르겠다</label>
+                        <br><br>
+                        <input type="radio" name="q2_1" value="5" id="aw3_3" onclick="showQ2_2(event)"><label for="aw3_3">어려울 것 같다</label>
+                    </div>
+
+
+                    <div class="movePGbtn_box">
+                        <div id="noBtn2_1" class="nextBtn" style="opacity: 0.5;">다음</div>
+                        <div id="chkBtn7" class="nextBtn" onclick="nextPG2_2(event)" style="display: none;">다음</div>
+                        <div id="chkBtn6" class="prevBtn" onclick="prevPG1(event)" style="display: block;">이전</div>
+                    </div>
+                </div>
+
+                <div class="box" id="box_Q3" hidden>
+                    <div class="Question">Q3. 식물을 기를 장소엔 햇빛이 얼마나 잘 드나요?</div>
+                    <div class="Answer" id="A3">
+                        <input type="radio" name="q3" value="5" id="aw8" onclick="showQ3(event)" required><label for="aw8">잘 들어온다</label>
+                        <br><br>
+                        <input type="radio" name="q3" value="4" id="aw9" onclick="showQ3(event)"><label for="aw9">적당히 들어온다</label>
+                        <br><br>
+                        <input type="radio" name="q3" value="3" id="aw10" onclick="showQ3(event)"><label for="aw10">조금 들어온다</label>
+                        <br><br>
+                        <input type="radio" name="q3" value="2" id="aw11" onclick="showQ3(event)"><label for="aw11">안 들어온다</label>
+                    </div>
+
+
+                    <div class="movePGbtn_box">
+                        <div id="noBtn3" class="nextBtn" style="opacity: 0.5;">다음</div>
+                        <div id="chkBtn9" class="nextBtn" onclick="nextPG3(event)" style="display: none;">다음</div>
+                        <div id="chkBtn8" class="prevBtn" onclick="prevPG1(event)" style="display: block;">이전</div>
+                    </div>
+                </div>
+
+                <div class="box" id="box_Q4" hidden>
+                    <div class="Question">Q4. 식물에게 제공할 공간의 크기는 어떤가요?</div>
+                    <div class="Answer" id="A4">
+                        <input type="radio" name="q4" value="1" id="aw13" onclick="showQ4(event)" required><label for="aw13">매우 좁음</label>
+                        <br><br>
+                        <input type="radio" name="q4" value="2" id="aw14" onclick="showQ4(event)"><label for="aw14">좁음</label>
+                        <br><br>
+                        <input type="radio" name="q4" value="3" id="aw15" onclick="showQ4(event)"><label for="aw15">보통</label>
+                        <br><br>
+                        <input type="radio" name="q4" value="4" id="aw16" onclick="showQ4(event)"><label for="aw16">큼</label>
+                        <br><br>
+                        <input type="radio" name="q4" value="5" id="aw17" onclick="showQ4(event)"><label for="aw17">매우 큼</label>
+                    </div>
+
+
+                    <div class="movePGbtn_box">
+                        <div id="noBtn4" class="nextBtn" style="opacity: 0.5;">다음</div>
+                        <div id="chkBtn11" class="nextBtn" onclick="nextPG4(event)" style="display: none;">다음</div>
+                        <div id="chkBtn10" class="prevBtn" onclick="prevPG1(event)" style="display: block;">이전</div>
+                    </div>
+                </div>
+
+                <div class="box" id="box_Q5" hidden>
+                    <div class="Question">Q5. 식물을 고를 때 가장 신경쓰이는 것을 하나 골라주세요.</div>
+                    <div class="Answer" id="A5">
+                        <input type="radio" name="q5" value="1" id="aw18" onclick="showQ5(event)" required><label for="aw18">관리 빈도 및 난이도</label>
+                        <br><br>
+                        <input type="radio" name="q5" value="2" id="aw19" onclick="showQ5(event)"><label for="aw19">식물 크기</label>
+                        <br><br>
+                        <input type="radio" name="q5" value="3" id="aw20" onclick="showQ5(event)"><label for="aw20">식물 효과 (ex.공기정화, 벌레퇴치 등)</label>
+                        <br><br>
+                        <input type="radio" name="q5" value="4" id="aw21" onclick="showQ5(event)"><label for="aw21">반려동물 위험성</label>
+                        <br><br>
+                        <input type="radio" name="q5" value="5" id="aw22" onclick="showQ5(event)"><label for="aw22">식물 일조량</label>
+                    </div>
+
+
+                    <div class="movePGbtn_box">
+                        <input id="noBtn7" class="resultButton" type="submit" value="결과 확인" style="opacity: 0.5;" disabled>
+                        <input id="resultButton" class="resultButton" type="submit" value="결과 확인" style="display: none;">
+                        <div id="chkBtn12" class="prevBtn" onclick="prevPG1(event)" style="display: block;">이전</div>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </section>
+
+        {% elif not account %}
+        <div class="noLogin_box">
+            <p>로그인한 회원만 이용가능한 서비스입니다.</p>
+            <a href="{% url 'login' %}">로그인하러 가기</a>
+        </div>
+
+        {% endif %}
+    </div>
+
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!-- -->
+
+</body>
+</html>

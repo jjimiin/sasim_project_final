@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 마이페이지</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/mypage/mypage_main_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!-- -->
+
+
+{% block content %}
+    <div class="conA">
+
+        <!--    관리자('sasim')로 로그인 했을 때    -->
+        {% if account.0 == 'sasim' %}
+        <div class="Mtext"><p>관리자 페이지</p></div>
+
+        <!--    일반 회원으로 로그인 했을 때    -->
+        {% elif account.0 != 'sasim' %}
+        <div class="Mtext1"><p>마이페이지</p></div>
+
+        <section class="myA">
+            <div class="flexA">
+                <img src="{%static 'img/mypage/마이페이지_메인_프로필.png'%}" width="300">
+            </div>
+
+            <div class="flexB">
+                <p class="flexB_1">'{{ account.2 }}'님의 마이페이지</p>
+                <p class="flexB_2">'키움'을 이용해주셔서 항상 감사합니다.</p>
+                <p class="flexB_3">마이페이지에서 주문조회 및 회원정보수정 등이 가능합니다.</p>
+            </div>
+        </section>
+        {% endif %}
+        <!--  -->
+
+
+        <!--    관리자('sasim')로 로그인 했을 때    -->
+        {% if account.0 == 'sasim' %}
+        <section class="myB">
+            <div class="myB1">
+                <img src="{%static 'img/mypage/사이트관리.png'%}" width="100">
+                <div class="admin_txt_a">사이트 관리</div>
+                <div class="myB_a">
+                    <input class="modify" type="button" value="관리자정보 확인" onclick="location.href='{% url 'mypage_profile' %}' ">
+                    <input class="contactReplyCheck" type="button" value="미답변 문의 확인" onclick="location.href='{% url 'mypage_contact_list' %}' ">
+<!--                    <input class="orderStateCheck" type="button" value="주문 상태 확인" onclick="location.href='{% url 'admin_order_check' sort=2 %}' ">-->
+                    <input class="statsCheck" type="button" value="통계 확인" onclick="location.href='{% url 'statsCheck' %}' ">
+                </div>
+            </div>
+
+            <div class="myB2">
+                <img src="{%static 'img/mypage/DB관리.png'%}" width="100">
+                <div class="admin_txt_b">DB 관리</div>
+                <div class="myB_b">
+                    <input type="button" value="회원" onclick="location.href='{% url 'user_list' %}'">
+                    <input type="button" value="식물" onclick="location.href='{% url 'admin_plantList' %}'">
+                    <input type="button" value="주문" onclick="location.href='{% url 'admin_orderList' %}'">
+                    <input type="button" value="주문 - 아이템" onclick="location.href='{% url 'admin_orderItemList' %}'">
+                    <input type="button" value="장바구니" onclick="location.href='{% url 'admin_cartList' %}'">
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 관리자가 아닌 회원으로 로그인 했을 때 -->
+        {% else %}
+        <section class="memberA">
+            <div class="myB_a">
+                <input class="modify" type="button" value="회원정보 확인" onclick="location.href='{% url 'mypage_profile' %}' ">
+                <input class="Inq-order" type="button" value="주문/배송 조회" onclick="location.href='{% url 'confirm_order' %}' ">
+                <input class="myCont" type="button" value="나의 1:1문의" onclick="location.href='{% url 'mypage_contact_list' %}' ">
+                <input class="myCont" type="button" value="회원 탈퇴" onclick="location.href='{% url 'check_pw_sub' %}' ">
+                <input class="myCont" type="button" value="나의 추천 식물" onclick="location.href='{% url 'test_result_list' %}' ">
+            </div>
+        </section>
+        {% endif %}
+        <!-- -->
+
+        <!--    관리자('sasim')가 아닐 때    -->
+<!--        {% if account.0 != 'sasim' %}-->
+<!--            <section class="myC">-->
+
+<!--                <h2>최근 주문내역</h2>-->
+
+<!--                <ul class="mTitle">-->
+<!--                    <li>주문일자</li>-->
+<!--                    <li>주문번호</li>-->
+<!--                    <li>주문내역</li>-->
+<!--                    <li>주문상태</li>-->
+<!--                </ul>-->
+
+
+<!--                <div class="ContactA">-->
+<!--                    {% if mypage_main_order_list %}-->
+<!--                        {% for list in mypage_main_order_list %}-->
+<!--                            <ul class="ContactB" onclick="location.href='{% url 'order_detail' id=list.0 %}' ">-->
+<!--                                <li>-->
+<!--                                    <p>{{ list.8 }}</p>-->
+<!--                                </li>-->
+
+<!--                                <li>-->
+<!--                                    <p>{{ list.0 }}</p>-->
+<!--                                </li>-->
+
+<!--                                <li>-->
+<!--                                    {% if list.4 == 0 %}-->
+<!--                                        <p>{{ list.2 }}</p>-->
+<!--                                    {% else %}-->
+<!--                                        <p>{{ list.2 }} 외 {{ list.4 }}건</p>-->
+<!--                                    {% endif %}-->
+<!--                                </li>-->
+
+<!--                                <li>-->
+<!--                                    <p>{{ list.7 }}</p>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        {% endfor %}-->
+
+<!--                        <div class="ContactC" onclick="location.href='{% url 'confirm_order' %}' ">더보기</div>-->
+
+<!--                    {% else %}-->
+<!--                        <p class="order_null">{{ order_null }}</p>-->
+<!--                    {% endif %}-->
+<!--                </div>-->
+
+<!--            </section>-->
+<!--        {% endif %}-->
+        <!-- -->
+
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

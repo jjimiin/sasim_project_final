@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+    min-height: 100vh;
+    background-image: url("img/로그인.jpg");
+    background-position: center center;
+    background-size: cover;
+}
+
+.conA {
+    margin-top: 220px;
+}
+/* */
+
+
+/*  */
+.loginForm {
+    box-shadow: 0px 0px 50px 5px #8C8C8C;
+    background-color: rgba(255, 255, 255, 95%);
+    width: 360px;
+
+    padding: 80px 40px;
+    border-radius: 10px;
+
+    margin: 150px auto;
+    justify-content: center;
+}
+
+.loginForm h1 {
+    text-align: center;
+    color: #6B8A24;
+    margin-top: -20px;
+}
+
+.loginContainer .subtxt {
+    text-align: center;
+    color: #AACC66;
+    margin-bottom: 30px;
+}
+
+.login_container p {
+
+    margin: 5px auto;
+    padding: 10px 0px;
+    justify-content: center;
+}
+
+.login_info_box {
+    margin: 0 20px;
+    margin-bottom: 50px;
+
+}
+
+.login_info_box input {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #B3987D;
+    background-color: rgba(255, 255, 255, 0);
+
+    padding: 7px 0;
+    padding-left: 7px;
+}
+.login_info_box input:focus {
+    border-bottom: 2px solid #9ECC66;
+}
+
+.td_l {
+    width: 95px;
+    text-align: right;
+    font-weight: bold;
+    color: #66554D;
+
+    padding: 15px 0;
+}
+
+.td_r {
+    text-align: left;
+    color: #99847A;
+
+    padding-left: 10px;
+}
+
+.login_container input::placeholder {
+    color: #B1CC7A;
+}
+
+.login_container .error {
+    font-size: 8px;
+    color: #FF4848;
+
+    text-align: center;
+}
+
+
+.login_btn input {
+    display: block;
+    width: 300px;
+    height: 50px;
+
+    border: none;
+    outline: none;
+    background: #99734D;
+    color: white;
+
+    margin: 0 auto;
+    justify-content: center;
+}
+.login_btn input:hover {
+    background: #80674D;
+}
+.login_btn input:active {
+    background: #664D33;
+}
+
+
+.joinSite {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.joinSite .join {
+    color: #2F9D27;
+}
+
+.joinSite .joinBtn {
+    color: #806040;
+}
+
+.joinSite .joinBtn:hover {
+    color: #4D8E99;
+}

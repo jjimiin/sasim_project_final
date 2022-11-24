@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | DB - 주문 테이블</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/account/userList_style.css' %}" type="text/css"/>
+
+</head>
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!-- -->
+
+
+{% block content %}
+    <div class="conA">
+
+        <form class="modifyForm" method="POST" action="{% url 'admin_orderList_detail' order_id=orderList_detail.0 %}">
+            {% csrf_token %}
+
+            <section class="Asection">
+                <div class="box1">
+                    <p class="sp1">DB관리</p>
+                    <p class="sp2">주문</p>
+                </div>
+
+                <div class="box2">
+                    <div class="box2_content_title">
+                        <span>ID</span>
+                        <span>{{ orderList_detail.0 }}</span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span>회원 주문 ID</span>
+                        <span>
+                            {% if orderList_detail.1 == 'sasim' %}
+                            <span class="bottom" style="color:#4D3B36;">탈퇴한 회원</span>
+                            {% else %}
+                            <span class="bottom" style="color:#4D3B36;">
+                                <a href="{% url 'user_list_detail' mb_id=orderList_detail.1 %}" style="color:#4D3B36; text-decoration: none;">
+                                {{ orderList_detail.1 }}</a>
+                            </span>
+                            {% endif %}
+                        </span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span>총 주문 가격</span>
+                        <span><input name="price" type="number" class="userModify" placeholder="총 주문 가격" value="{{ orderList_detail.2 }}"></span>
+                    </div>
+
+                     {% if orderList_detail.1 != 'sasim' %}
+
+                    <div class="box2_content">
+                        <span style="background-color:#806040; color:#fff; padding:9px 0px; border-radius:30px;">수령인</span>
+                        <span><input name="shipName" type="text" class="userModify" placeholder="수령인" value="{{ orderList_detail.3 }}"></span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span style="color:#B38659;">전화번호</span>
+                        <span>
+                            <input name="phone1" type="tel" class="userModify" placeholder="" value="{{ phone.0 }}" style="width: 70px;">
+                            -
+                            <input name="phone2" type="tel" class="userModify" placeholder="" value="{{ phone.1 }}" maxlength="4" style="width: 70px;">
+                            -
+                            <input name="phone3" type="tel" class="userModify" placeholder="" value="{{ phone.2 }}" maxlength="4" style="width: 70px;">
+                        </span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span style="color:#B38659;">우편번호</span>
+                        <span><input name="postcode" type="text" class="userModify" placeholder="우편번호" value="{{ orderList_detail.5 }}" style="width: 70px;"></span>
+                    </div>
+
+                     <div class="box2_content">
+                        <span style="color:#B38659;">주소</span>
+                        <span><input name="address1" type="text" class="userModify" placeholder="주소" value="{{ orderList_detail.6 }}"></span>
+                    </div>
+
+                     <div class="box2_content">
+                        <span style="color:#B38659;">상세주소</span>
+                        <span><input name="address2" type="text" class="userModify" placeholder="상세주소" value="{{ orderList_detail.7 }}"></span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span style="color:#B38659;">배송메모</span>
+                        <span><input name="msg" type="text" class="userModify" placeholder="배송 메모" value="{{ orderList_detail.8 }}"></span>
+                    </div>
+
+                    {% endif %}
+
+                    <div class="box2_content">
+                        <span>지불 방식</span>
+                        <span><input name="payment" type="text" class="userModify" placeholder="주문 날자" value="{{ orderList_detail.11 }}"></span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span>주문 날짜</span>
+                        <span style="color:#4D3B36;">{{ orderList_detail.9 }}</span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span>주문 상태</span>
+                        <span><input name="state" type="text" class="userModify" placeholder="주문 날짜" value="{{ orderList_detail.10 }}"></span>
+                    </div>
+
+                    <div class="box2_content">
+                        <span>주문 식물 ID</span>
+                        <span>
+                            {% for list in orderList_detail_items %}
+                            <a href="{% url 'admin_plantList_detail' pl_id=list.1 %}" style="text-decoration:none; color:#4D3B36;">
+                                <p>{{ list.1 }}</p>
+                            </a>
+                            {% endfor %}
+                        </span>
+                    </div>
+
+                </div>
+            </section>
+
+            <div class="top2">
+                <input id="modifyButton" class="btn btn-primary" type="submit" value="수정">
+                <a href="{% url 'admin_orderList' %}" class="back">목록</a>
+            </div>
+
+        </form>
+
+
+    </div>
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

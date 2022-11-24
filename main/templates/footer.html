@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/main/footer.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+{% block content %}
+
+<wrap>
+    <footer>
+        <!--footer-->
+        <div class="footer">
+            <div class="footA">
+                <span><a href="#"><b>개인정보처리방침</b></a></span>
+                <span><a href="#">영상정보처리기기 운영관리 방침</a></span>
+                <span><a href="#">홈페이지 이용약관</a></span>
+                <span><a href="#">사이트맵</a></span>
+            </div>
+
+            <div class="footB">
+                <p><b>키움</b></p>
+            </div>
+
+            <div class="footC">
+                <span>서울특별시 성동구 살곶이길 200, 한양여자대학교</span>
+                <span>|</span>
+                <span>TEL : 02-2290-2114</span>
+            </div>
+
+            <div class="footD">
+                <p>ⓒ 2022 KIUM COMPANY.ALL RIGHTS RESERVED</p>
+            </div>
+        </div>
+    </footer>
+</wrap>
+
+{% endblock%}
+</body>
+</html>

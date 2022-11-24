@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 통계</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/shop/statsCheck_style.css' %}" type="text/css"/>
+
+</head>
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!---->
+
+
+{% block content %}
+    <div class="conA">
+
+        <!--    누적 판매량    -->
+        {% if id == 1 %}
+        <div class="statsList">
+            <div class="statsList_txt">누적 판매량 통계</div>
+            <div class="statsList_txt_sub">*그래프 : 최대 30개까지 표시</div>
+
+            <!--    그래프 이미지    -->
+            <div class="graph_img_box">
+                <img class="graph_img" src="{% static img_graph %}" alt="이미지">
+            </div>
+
+            <div class="statsList_n">
+                <div class="statsList_title" id="statsList_title">
+                    <p style="width: 150px;">id</p>
+                    <p>식물명</p>
+                    <p>단가</p>
+                    <p>누적 판매량</p>
+                </div>
+
+                {% for list in total_sell_rank_list %}
+                <div class="statsList_c">
+                    <a href="{% url 'admin_plantList_detail' pl_id=list.0 %}">
+                        <div class="statsList_title">
+                            <p style="width: 150px;">{{ list.0 }}</p>
+                            <p>{{ list.1 }}</p>
+                            <p>{{ list.2 }}</p>
+                            <p>{{ list.4 }}</p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <!--    최근 일주일 판매량    -->
+        {% elif id == 2 %}
+        <div class="statsList">
+            <div class="statsList_txt">최근 일주일 판매량 통계</div>
+            <div class="statsList_txt_sub">*그래프 : 최대 30개까지 표시</div>
+
+            <!--    그래프 이미지    -->
+            <div class="graph_img_box">
+                <img class="graph_img" src="{% static img_graph %}" alt="이미지">
+            </div>
+
+            <div class="statsList_n">
+                <div class="statsList_title" id="statsList_title">
+                    <p style="width: 150px;">id</p>
+                    <p>식물명</p>
+                    <p>단가</p>
+                    <p>판매량</p>
+                </div>
+
+                {% for list in week_sell_rank_list %}
+                <div class="statsList_c">
+                    <a href="{% url 'admin_plantList_detail' pl_id=list.0 %}">
+                        <div class="statsList_title">
+                            <p style="width: 150px;">{{ list.0 }}</p>
+                            <p>{{ list.2 }}</p>
+                            <p>{{ list.4 }}</p>
+                            <p>{{ list.1 }}</p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <!--    이번달 회원별 구매액    -->
+        {% elif id == 3 %}
+        <div class="statsList">
+            <div class="statsList_txt">이번달 회원별 구매액 통계</div>
+
+            <div class="statsList_txt_sub">*탈퇴한 회원 미포함</div>
+            <div class="statsList_txt_sub">*그래프 : 최대 30명까지 표시</div>
+
+            <div class="statsList_txt2">{{datetimeYear}}년 {{datetimeMonth}}월</div>
+
+            <!--    그래프 이미지    -->
+            <div class="graph_img_box">
+                <img class="graph_img" src="{% static img_graph %}" alt="이미지">
+            </div>
+
+            <div class="statsList_n">
+                <div class="statsList_title" id="statsList_title">
+                    <p style="width: 600px;">회원ID</p>
+                    <p style="width: 600px;">총 구매액</p>
+                </div>
+
+                {% for list in user_buy_amount_rank_list %}
+                <div class="statsList_c">
+                    <a href="{% url 'user_list_detail' mb_id=list.0 %}">
+                        <div class="statsList_title">
+                            <p style="width: 600px;">{{ list.0 }}</p>
+                            <p style="width: 600px;">{{ list.1 }}원</p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <!--    최근 한달 매출액    -->
+        {% elif id == 4 %}
+        <div class="statsList">
+            <div class="statsList_txt">최근 한달 매출액 통계</div>
+
+            <div class="statsList_txt2">{{tmpB}} ~ {{tmpA}}</div>
+
+            <!--    그래프 이미지    -->
+            <div class="graph_img_box">
+                <img class="graph_img" src="{% static img_graph %}" alt="이미지">
+            </div>
+
+            <div class="statsList_n">
+                <div class="statsList_title" id="statsList_title">
+                    <p style="width: 600px;">날짜</p>
+                    <p style="width: 600px;">총액</p>
+                </div>
+
+                {% for list in month_total_amount_mysql %}
+                <div class="statsList_c">
+                    <div class="statsList_title">
+                        <p style="width: 600px;">{{ list.1 }}</p>
+                        <p style="width: 600px;">{{ list.0 }}원</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <!--    월별 매출액    -->
+        {% elif id == 5 %}
+        <div class="statsList">
+            <div class="statsList_txt">월별 매출액 통계</div>
+
+            <!--    그래프 이미지    -->
+            <div class="graph_img_box">
+                <img class="graph_img" src="{% static img_graph %}" alt="이미지">
+            </div>
+
+            <div class="statsList_n">
+                <div class="statsList_title" id="statsList_title">
+                    <p style="width: 600px;">날짜</p>
+                    <p style="width: 600px;">총액</p>
+                </div>
+
+                {% for list in month_sales_list %}
+                <div class="statsList_c">
+                    <div class="statsList_title">
+                        <p style="width: 600px;">{{ list.0 }}</p>
+                        <p style="width: 600px;">{{ list.1 }}원</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <!--    회원 재구매율    -->
+        {% elif id == 6 %}
+        <div class="statsList">
+            <div class="statsList_txt">회원 재구매율 통계</div>
+
+            <!--    그래프 이미지    -->
+            <div class="graph_img_box">
+                <img class="graph_img" src="{% static img_graph %}" alt="이미지">
+            </div>
+
+            <div class="statsList_n">
+                <div class="statsList_title" id="statsList_title">
+                    <p style="width: 600px;">주문 건수</p>
+                    <p style="width: 600px;">회원 수</p>
+                    <p style="width: 600px;">비율</p>
+                </div>
+
+                {% for list in user_rebuy_list %}
+                <div class="statsList_c">
+                    <div class="statsList_title">
+                        <p style="width: 600px;">{{ list.0 }}</p>
+                        <p style="width: 600px;">{{ list.1 }}명</p>
+                        <p style="width: 600px;">{{ list.2 }}%</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        <div class="listBtn_box">
+            <a href="{% url 'statsCheck' %}" class="listBtn">목록</a>
+        </div>
+
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

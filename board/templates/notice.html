@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 공지사항</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/board/notice_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+    {% block head %}
+        {% include "header.html" %}
+    {% endblock%}
+
+    {% block content %}
+
+    <div class="conA">
+
+        <!--공지사항 최상단-->
+        <section class="Ntitle"><p>공지사항</p></section>
+
+        <ul>
+            <li>
+                <ul class="nTable">
+                    <li style="color:#652A18;">No</li>
+                    <li>제목</li>
+                    <li>작성일</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!--   게시글   -->
+        {% for post in page_obj %}
+            <div class="notice">
+                <ul class="nTableA">
+                    <li>{{ forloop.revcounter }}</li>
+                    <li class="nTitle"><a href="{% url 'notice_detail' pk=post.pk %}">{{ post.title }}</a></li>
+                    <li>{{ post.created_date | date:'Y-m-d' }}</li>
+                </ul>
+            </div>
+        {% endfor %}
+        <!--        -->
+
+
+        <!--  페이지  -->
+        <ul class="pagination justify-content-center">
+            <!-- 이전페이지 -->
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">이전</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+                </li>
+            {% endif %}
+
+            <!-- 페이지리스트 -->
+            {% for page_number in page_obj.paginator.page_range %}
+                {% if page_number == page_obj.number %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            <!-- 다음페이지 -->
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">다음</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                </li>
+            {% endif %}
+        </ul>
+        <!-- 페이징처리 끝 -->
+    </div>
+
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+{% endblock%}
+</body>
+</html>

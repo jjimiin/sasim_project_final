@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 장바구니</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/shop/plant_cart_style.css' %}" type="text/css"/>
+
+</head>
+
+<script>
+    function chkAll(event) {
+        const query1 = 'input[name="cart_chk"]';
+        const selectedEls1 = document.querySelectorAll(query1);
+
+        if (event.target.checked) {
+            selectedEls1.forEach((el) => {
+                el.checked = true;
+            });
+        } else {
+            selectedEls1.forEach((el) => {
+                el.checked = false;
+            });
+        }
+    }
+</script>
+
+<body>
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+
+
+{% block content %}
+
+    <div class="conA">
+
+        <form class="buyForm" method="POST" action="{% url 'plant_buy' %}">
+            {% csrf_token %}
+            <!--    프론트에선 안 보임 - 프론트 작업x    -->
+            <!--    장바구니 구분용    -->
+            <input type="hidden" name="sort" value="장바구니">
+            <!--   -->
+
+            <h1>장바구니</h1>
+
+            <div class="text_box">
+                <ul>
+                    <li>장바구니에 넣은 지 7일이 넘은 상품은 자동 삭제됩니다. </li>
+                    <li>장바구니에 담은 상품이 품절됐을 경우, 구매가 불가합니다.</li>
+                </ul>
+            </div>
+
+            <!--    전체 선택 버튼    -->
+            <div class="input_chkAll">
+                <input type="checkbox" id="check_all" value="All" onclick="chkAll(event)" checked>
+                <label for="check_all" class="check_all_txt">전체 선택</label>
+            </div>
+
+            <!--    선택 삭제 버튼    -->
+            <div class="delete_item">
+                <input id="deleteButton" name="buyButton" class="delete_item_btn1" type="submit" value="선택 삭제">
+                <input id="deleteAllButton" name="buyButton" class="delete_item_btn2" type="submit" value="장바구니 비우기">
+            </div>
+            <!---->
+
+
+
+            <!--  장바구니 상품 목록  -->
+            <div class="cart_item_list">
+                {% for list in cart_list_final %}
+
+                    <!--  각 상품  -->
+                    <label>
+                        <div class="cart_item">
+                            <div class="cart_item_main">
+                                <input type="checkbox" name="cart_chk" id="cart_chk" value="{{ list.10 }}" onclick="chkBox_chk(event)" checked>
+                                <!--  상품 / 페이지 이동 걸린 부분  -->
+                                <a href="{% url 'plant_detail' id=list.1 %}">
+                                    <div>
+                                        <img src="{% static list.5 %}" alt="이미지"> <!--  이미지  -->
+                                    </div>
+                                    <p class="plName">{{ list.2 }}</p> <!--  상품명  -->
+                                    <p class="price">{{ list.4 }}원</p> <!--  단가  -->
+                                </a>
+                                <!--    -->
+                            </div>
+
+
+                            <div class="cart_item_detail">
+                                <p class="amount">{{ list.3 }} 개</p> <!--  수량  -->
+                                <p class="p_a">{{ list.8 }}원</p> <!--  총합  -->
+                            </div>
+                        </div>
+                    </label>
+                    <!-- -->
+
+                {% endfor %}
+            </div>
+            <!---->
+
+
+            <div class="cart_price">
+                <div class="cart_price_box">
+                    <div class="cart_price_label">
+                        <div class="cart_price_label_1">장바구니 총 금액</div>
+                        <div class="cart_price_label_2">{{ cart_total_price }}원</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+<!--            &lt;!&ndash;    가격 계산 (상품 총합 + 배송비 = 총 금액)    &ndash;&gt;-->
+<!--            <div class="total_price">-->
+<!--                <div class="total_price_box">-->
+<!--                    <div class="label">-->
+<!--                        <div class="label1">상품 금액</div>-->
+<!--                        <div class="label2">배송비</div>-->
+<!--                        <div class="label3">총 주문 금액</div>-->
+<!--                    </div>-->
+
+<!--                    <div class="content">-->
+<!--                        <div class="content1">{{ cart_total_price }}</div> &lt;!&ndash;  상품 총 금액  &ndash;&gt;-->
+<!--                        <div class="content2">+</div>-->
+<!--                        <div class="content3">{{ shipping_cost }}</div> &lt;!&ndash;  배송비  &ndash;&gt;-->
+<!--                        <div class="content4">=</div>-->
+<!--                        <div class="content5" id="sum_p_price">{{ cart_total_price_shipping }}원</div> &lt;!&ndash;  총 주문 금액  &ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;&ndash;&gt;-->
+
+
+            <!--    주문 버튼    -->
+            <div class="buy_item">
+                <input id="buyCartButton" name="buyButton" class="buy_item_btn1" type="submit" value="선택 상품 주문">
+                <input id="buyCartAllButton" name="buyButton" class="buy_item_btn2" type="submit" value="전체 상품 주문">
+            </div>
+            <!---->
+
+        </form>
+
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

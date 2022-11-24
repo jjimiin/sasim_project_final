@@ -1,0 +1,657 @@
+@charset "UTF-8";
+
+/* body 공통적용 */
+body {
+    margin:0;
+	font-family: 'sans-serif';,
+	'Apple SD Gothic Neo',
+	'sans-serif';
+    background-color: #f9f7f6;
+}
+
+.conA {
+    margin-top: 150px;
+}
+/*  */
+
+
+/* mypage_profile.html */
+.myPro {
+    margin: 150px auto;
+    margin-top: 200px;
+    justify-content: center;
+
+    padding: 50px 30px;
+
+    width: 40%;
+    min-width: 400px;
+    height: 600px;
+
+    border: 2px solid #806040;
+    border-radius: 25px;
+    background-color: white;
+}
+
+.myPro h1 {
+    text-align: center;
+    color: #664F33;
+    margin: -10px 0 50px 0;
+}
+
+.photo {
+    list-style: none;
+    float: left;
+}
+
+.myinfo_text {
+    list-style: none;
+    margin: 10px 0 0 100px;
+    padding: 30px 0 0 0;
+}
+
+.myinfo_text > .myname {
+    font-size: 17pt;
+    font-weight: bold;
+    color: #384D2E;
+}
+
+.myinfo_text > .myid {
+    margin: 10px 0 10px 0;
+    color: #85997A;
+}
+
+.sub_myinfo {
+    margin: 50px 0 0 0;
+    padding: 20px 0;
+
+    width: 90%;
+    border-top: 1px solid #C7AF9F;
+    border-bottom: 1px solid #C7AF9F;
+}
+
+.sub_myinfo .label {
+    font-weight: bold;
+    text-align: right;
+    color: #806039;
+
+    width: 20%;
+    margin-left: 30px;
+}
+
+.sub_myinfo .content {
+    width: 200px;
+
+    color: #5E804D;
+}
+
+.sub_myinfo .sub_myinfo_con {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.label_con {
+    width: 80%;
+    padding-left: 10px;
+}
+
+#label_con_id1 {
+    margin-top: -20px;
+}
+
+#label_con_id2 {
+    margin-top: -25px;
+}
+
+.modify_c {
+    padding: 20px 0;
+}
+
+.modify_c_txt {
+    padding: 10px 20px;
+    margin-left: 60px;
+
+    border: 1px solid #698053;
+    border-radius: 5px;
+
+    background-color: #E5EDDD;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    color: #698053;
+}
+.modify_c_txt:hover {
+    color: white;
+    background-color: #698053;
+    text-decoration: underline;
+
+    border: 1px solid #E5EDDD;
+}
+
+.modify_c_txt2 {
+    padding: 10px 20px;
+    margin-left: 10px;
+
+    border: 1px solid #BF8160;
+    border-radius: 5px;
+
+    background-color: #F2E9E4;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    color: #BF8160;
+}
+.modify_c_txt2:hover {
+    color: white;
+    background-color: #BF8160;
+    text-decoration: underline;
+
+    border: 1px solid #F2E9E4;
+}
+/* mypage_profile.html */
+
+
+
+/* check_pw.html */
+.chkPW_h3 {
+    text-align: center;
+    color: #4D423D;
+}
+
+.chkPW_div1 {
+    margin-top: 15px;
+
+    font-weight: bold;
+    text-align: center;
+    color: #B35947;
+}
+
+.chkPW_div2 {
+    margin: 5px auto;
+
+    text-align: center;
+    font-size: 13px;
+    color: #806A66;
+}
+
+.chkPW_div3 {
+    width: 80%;
+    max-width: 600px;
+
+    margin: 50px auto;
+    margin-bottom: 50px;
+    padding: 50px 0px;
+
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    color: #55663D;
+    background-color: white;
+
+    border: 3px solid #658040;
+    border-radius: 10px;
+}
+
+.chkPW_div4 {
+    margin-bottom: 70px;
+
+    text-align: center;
+    font-size: 15px;
+}
+
+.chkPW_div4_a {
+    width: 70%;
+    max-width: 500px;
+
+    margin: 0px auto;
+    padding: 30px 0px;
+
+    font-weight: bold;
+    color: #F7F3F0;
+    background-color: #805A40;
+
+    border-top: 3px solid #805A40;
+    border-right: 3px solid #805A40;
+    border-left: 3px solid #805A40;
+    border-radius: 10px 10px 0 0;
+}
+
+.chkPW_div4_b {
+    width: 70%;
+    max-width: 500px;
+
+    margin: 0px auto;
+
+    background-color: white;
+
+    border-bottom: 3px solid #805A40;
+    border-right: 3px solid #805A40;
+    border-left: 3px solid #805A40;
+    border-radius: 0 0 10px 10px;
+}
+
+.chkPW_div4_b_1 {
+    padding: 20px 0;
+
+    border-top: 1px solid #E6D6CF;
+    border-radius: 5px;
+}
+.chkPW_div4_b_1:hover {
+    background-color: #F7EFEB;
+}
+
+.chkPW_div4_b_1>a {
+    text-decoration: none;
+    color: #664E3D;
+}
+
+.chkPW_div4_p1 {
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+
+.matchPW_error {
+    font-size: 14px;
+    color: #FF5A5A;
+    padding-bottom: 10px;
+}
+
+.user_info_box {
+    width: 400px;
+
+    margin: 30px auto;
+    padding: 20px 30px;
+
+    text-align: center;
+    border: 3px solid #B39A8F;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.tlb_l {
+    font-weight: bold;
+    text-align: right;
+    color: #665751;
+
+    padding: 5px 10px;
+}
+
+.tlb_r {
+    text-align: left;
+    color: #80726C;
+
+    padding: 5px 10px;
+}
+
+.tlb_r input {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #99796B;
+
+    color: #80726C;
+}
+
+.tlb_r input::placeholder {
+    color: #B3A6A1;
+}
+
+.chkPW_btn {
+    width: 300px;
+
+    margin: 130px auto;
+    margin-top: 50px;
+
+    text-align: center;
+}
+
+.chkPW_btn input {
+    width: 150px;
+
+    padding: 10px 20px;
+
+    border: 2px solid #6A8040;
+    border-radius: 3px;
+    background-color: #95B359;
+    font-weight: bold;
+    color: white;
+}
+
+.chkPW_btn input:hover {
+    background-color: #8DA65B;
+}
+.chkPW_btn input:active {
+    background-color: #85995C;
+}
+/* check_pw.html */
+
+
+
+/* mypage_unregister.html */
+.unregister_txt_p {
+    margin-bottom: 35px;
+
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+    color: #664B3D;
+}
+
+.unregister_txt_box {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    padding: 20px 30px;
+
+    width: 80%;
+    max-width: 800px;
+
+    border: 2px solid #664633;
+    border-radius: 5px;
+    color: #735D50;
+    background-color: white;
+}
+
+.unregister_txt_box p {
+    margin: 5px 0;
+}
+
+.unregister_a_box {
+    margin-bottom: 150px;
+    text-align: center;
+}
+
+.unregister_a_home {
+    padding: 10px 20px;
+
+    text-decoration: none;
+    color: #EAEDE6;
+    background-color: #66804D;
+    border: 2px solid #51663D;
+    border-radius: 5px;
+}
+/* mypage_unregister.html */
+
+
+/* order_success.html */
+.odS_boxA {
+    width: 80%;
+    max-width: 800px;
+
+    margin: 0 auto;
+    padding: 30px 25px;
+
+    text-align: center;
+    border: 2px solid #EDC8A6;
+    border-radius: 5px;
+    background-color: #F7EBDF;
+}
+
+.odS_boxA_h2 {
+    color: #CC9A3D;
+    margin-bottom: 25px;
+}
+
+.odS_boxA_txt1 {
+    color: #805540;
+    font-weight: bold;
+    font-size: 17px;
+
+    margin-bottom: 7px;
+}
+
+.odS_boxA_txt2 {
+    color: #805E4D;
+    text-align: left;
+
+    width: 40%;
+    min-width: 330px;
+    margin: 0 auto;
+}
+
+.odS_boxA_txt3 {
+    color: #805E4D;
+    text-align: left;
+
+    width: 40%;
+    min-width: 330px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.odS_boxB {
+    width: 80%;
+    max-width: 800px;
+
+    text-align: right;
+    margin: 30px auto;
+    margin-bottom: 100px;
+}
+
+.odS_boxB>a {
+    margin: 0 auto;
+    padding: 10px 15px;
+
+    border: 2px solid #76993D;
+    border-radius: 5px;
+
+    text-decoration: none;
+    font-weight: bold;
+    color: #F2F0ED;
+    background-color: #76993D;
+}
+.odS_boxB>a:hover {
+    background-color: #80A642;
+}
+.odS_boxB>a:active {
+    background-color: #8CBF39;
+}
+
+.odS_h3 {
+    width: 48%;
+    min-width: 380px;
+
+    margin: 0 auto;
+    margin-bottom: 10px;
+
+    color: #66533D;
+}
+
+.odS_boxC {
+    width: 50%;
+    min-width: 400px;
+
+    margin: 0 auto;
+    margin-bottom: 150px;
+
+    border-top: 2px solid #685449;
+    border-bottom: 2px solid #685449;
+}
+
+.odS_boxC_txt1>p{
+    padding: 10px 10px;
+    border-bottom: 1px solid #685449;
+}
+.odS_boxC_txt2>p{
+    padding: 10px 10px;
+    border-bottom: 1px solid #685449;
+}
+.odS_boxC_txt3>p{
+    padding: 10px 10px;
+}
+
+.odS_boxC_txt1_l {
+    float: left;
+    width: 100px;
+
+    margin-right: 10px;
+
+    text-align: right;
+    font-weight: bold;
+    color: #596647;
+    background-color: #F3F3F3;
+}
+
+.odS_boxC_txt1_r {
+    padding-left: 10px;
+
+    text-align: left;
+    color: #806959;
+}
+/* order_success.html */
+
+
+/* modify_profile.html */
+.modifyForm2 {
+    width: 60%;
+    min-width: 500px;
+
+    margin: 150px auto;
+    justify-content: center;
+}
+
+.pro_user_info_h2 {
+    color: #58663D;
+    text-align: center;
+}
+
+.pro_user_info_box table {
+    width: 80%;
+    min-width: 400px;
+    justify-content: center;
+
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 30px 5px;
+
+    border: 2px solid #5C6652;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.cfm_user_info_box_label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #80664D;
+    text-align: center;
+
+    margin: 30px 0;
+    margin-top: 40px;
+}
+
+.tbl_l {
+    text-align: right;
+    font-weight: bold;
+    color: #66513D;
+
+    width: 200px;
+    padding: 10px 15px;
+}
+.tbl_r {
+    text-align: left;
+    color: #665B52;
+    padding: 10px 0px;
+    padding-left: 10px;
+}
+
+.cfm_user_info_box .tbl_l {
+    width: 35%;
+}
+
+.mdf_user_info_box .tbl_l {
+    width: 35%;
+}
+
+.mdf_user_info_box input {
+    padding: 8px 0;
+    padding-left: 7px;
+
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #CCAA8F;
+    background-color: rgba(255, 255, 255, 0);
+    color: #665447;
+}
+.mdf_user_info_box input:focus {
+    border-bottom: 2px solid #9ECC66;
+    background-color: #FAF8F7;
+}
+.mdf_user_info_box input:hover {
+    background-color: #FCFBFA;
+}
+
+.phone_list {
+    width: 50px;
+    height: 33.8px;
+
+    border: none;
+    outline: none;
+
+    border-bottom: 2px solid #CCAA8F;
+}
+.phone_list:focus {
+    border-bottom: 2px solid #9ECC66;
+    background-color: #FAF8F7;
+}
+.phone_list:hover {
+    background-color: #FCFBFA;
+}
+
+.userPhone {
+    width: 15%;
+}
+
+.mdf_user_info_box #userTel {
+    width: 100px;
+}
+.mdf_user_info_box .postcode {
+    width: 55px;
+}
+.mdf_user_info_box .address {
+    width: 50%;
+    min-width: 190px;
+}
+
+.mfy_pro_btn {
+    text-align: center;
+}
+
+.modifyPrFButton {
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+#modifyPrFButton1 {
+    border: 2px solid gray;
+    background-color: #E6E6E6;
+    color: #333333;
+}
+#modifyPrFButton1:hover {
+    background-color: #D9D9D9;
+}
+
+#modifyPrFButton2 {
+    border: 2px solid #556633;
+    background-color: #80994D;
+    color: white;
+}
+#modifyPrFButton2:hover {
+    background-color: #6A8040;
+}
+
+.search_postcode_btn {
+    border: 1.5px solid #806959;
+    border-radius: 2px;
+    background: #F7F5F2;
+    font-size: 12px;
+    color: #4D3F36;
+
+    margin-left: 10px;
+    padding: 5px 8px;
+}
+
+.search_postcode_btn:hover {
+    background: #F2F0ED;
+}
+/* modify_profile.html */
+
+

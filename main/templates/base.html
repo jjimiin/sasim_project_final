@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>키움</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'style/main/base_style.css' %}" type="text/css"/>
+
+</head>
+<!--head 부분 종료-->
+
+<script>
+    $(document).ready(function() {
+        $('#carouselExampleIndicators').carousel('cycle');
+    });
+</script>
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!---->
+
+
+{% block content %}
+
+    <section class="sectionA">
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" data-bs-interval="3000">
+
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="width:100%;">
+                    <a href="{% url 'test_main' %}">
+                        <img src="{% static 'img/main/banner/banner3.png' %}">
+                    </a>
+                </div>
+                <div class="carousel-item" style="width:100%;">
+                    <a href="{% url 'plant_detail' id=100075 %}">
+                        <img src="{% static 'img/main/banner/banner1.png' %}">
+                    </a>
+                </div>
+                <div class="carousel-item" style="width:100%;">
+                    <a href="{% url 'plant_detail' id=100078 %}">
+                        <img src="{% static 'img/main/banner/banner2.png' %}">
+                    </a>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
+        </div>
+    </section>
+
+
+
+    <!--공지사항-->
+    <section class="mainB">
+        <div class="containerB">
+            <span class="noticeB"><i class="fa-solid fa-bullhorn" style="font-size:23px; margin-right:10px;"></i>공지사항</span>
+
+            <!--    공지사항 게시글이 존재할 때    -->
+            {% if n_posts != null %}
+            <span class="contentB"><a href="{% url 'notice_detail' pk=n_posts.0.pk %}">{{ n_posts.0.title }}</a></span>
+
+            <!--    공지사항 게시글이 존재하지 않을 때    -->
+            {% else %}
+            <span class="contentB">게시글이 없습니다.</span>
+
+            {% endif %}
+            <!--    if문 마침    -->
+
+            <a href="{% url 'notice_list' %}" id="notice_btn" style="">더보기</a>
+        </div>
+    </section>
+    <!--공지사항 끝-->
+
+
+    <!--베스트 아이템-->
+    <section class="mainC">
+        <p class="textC">
+            <img src="{% static 'img/main/txt1.png' %}" alt="이미지">
+    <!--        <b>키움에 새로 찾아온 식물들이에요!</b>-->
+        </p>
+
+        <div class="containerC">
+
+                <!-- 결과 없을 때 -->
+                {% if not new_plant %}
+                    <div>새로운 식물이 없습니다.</div>
+
+                <!-- 결과 있을 때 -->
+                {% elif new_plant %}
+                    {% for new in new_plant %}
+                        <div class="text">
+                            <a href="{% url 'plant_detail' id=new.0%}">
+                                <img src="{% static new.3 %}" alt="이미지">
+                                <h2 style="font-weight:bold;">{{ new.1 }}</h2>
+                            </a>
+                            <p class="text2">{{ new.2 }}원</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+        </div>
+    </section>
+    <!--베스트 아이템 끝-->
+
+    <!--키움 문의하기-->
+    <section class="mainD">
+
+        <div class="containerD">
+            <p class="titleD">키움</p>
+            <p class="contentD">항상 최선을 다하고 있습니다.<br>궁금한 점이 있으시면 언제든지 연락 주세요.</p>
+            <p><a href="{% url 'contact_list' %}"><button>문의하기</button></a></p>
+        </div>
+    </section>
+    <!--키움 문의하기 끝-->
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

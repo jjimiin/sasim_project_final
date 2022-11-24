@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 통계</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/shop/statsCheck_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+<!-- 헤더 -->
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+<!---->
+
+
+{% block content %}
+    <div class="conA">
+        <p class="title">키움 통계</p>
+
+        <div class="titleBtn">
+            <a href="#sell">식물 판매량</a>
+            <a href="#user">회원 구매액</a>
+            <a href="#sales">매출액</a>
+        </div>
+
+
+        <!----><!----><!---->
+        <div class="titleBox">
+            <a name="sell">판매량 통계</a>
+        </div>
+
+
+        <!---->
+        <!--    누적 판매량    -->
+        <p class="sell_rank_title">누적 판매량</p>
+
+        <div class="total_sell_rank">
+
+            {% for n in total_sell_rank_list %}
+            <div class="total_sell_rank_list">
+
+                <p class="total_sell_rank_list_r" style="color:{% if n.5 == 1 %}#448026;{% elif n.5 == 2 %}#6CA66C;{% else %}#B8CCC4;{% endif %}">{{ n.5 }}위</p>
+
+                <a href="{% url 'plant_detail' id=n.0 %}" style="text-decoration: none;">
+                    <!--    식물 이미지    -->
+                    <img class="total_sell_rank_list_img" src="{% static n.3 %}" alt="이미지">
+                    <!--    식물 이름    -->
+                    <p class="total_sell_rank_list_name">{{ n.1 }}</p>
+                </a>
+
+                <p class="total_sell_rank_list_count">누적 판매량: {{ n.4 }}개</p>
+
+            </div>
+            {% endfor %}
+       </div>
+
+        {% if total_sell_rank_list %}
+        <div class="moreBtn_box">
+            <a href="{% url 'statsCheck_detail' id=1 %}" class="moreBtn">더보기</a>
+        </div>
+        {% else %}
+        <p class="noDataTxt">데이터가 없습니다.</p>
+        {% endif %}
+        <!-- -->
+
+
+        <!---->
+        <!--    일주일간 판매량    -->
+        <p class="sell_rank_title">최근 일주일 판매량</p>
+
+        <div class="total_sell_rank">
+            {% for list in week_sell_rank_list %}
+            <div class="total_sell_rank_list">
+
+                <p class="total_sell_rank_list_r" style="color:{% if list.4 == 1 %}#448026;{% elif list.4 == 2 %}#6CA66C;{% else %}#B8CCC4;{% endif %}">{{ list.4 }}위</p>
+
+                <a href="{% url 'plant_detail' id=list.0 %}" style="text-decoration: none;">
+                    <!--    식물 이미지    -->
+                    <img class="total_sell_rank_list_img" src="{% static list.3 %}" alt="이미지">
+                    <!--    식물 이름    -->
+                    <p class="total_sell_rank_list_name">{{ list.2 }}</p>
+                </a>
+                <p class="total_sell_rank_list_count">판매량: {{ list.1 }}개</p>
+
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if week_sell_rank_list %}
+        <div class="moreBtn_box">
+            <a href="{% url 'statsCheck_detail' id=2 %}" class="moreBtn">더보기</a>
+        </div>
+        {% else %}
+        <p class="noDataTxt">데이터가 없습니다.</p>
+        {% endif %}
+        <!-- -->
+
+
+        <!----><!----><!---->
+        <div class="titleBox">
+            <a name="user">회원 구매액 통계</a>
+        </div>
+
+
+        <!---->
+        <!--    최근 한달 회원별 구매 총액    -->
+        <p class="sell_rank_title">이번달 회원별 구매 총액</p>
+
+        <p class="sell_rank_title_sub">{{datetimeYear}}.{{datetimeMonth}}</p>
+
+        <div class="total_sell_rank">
+            {% for list in user_buy_amount_rank_list %}
+            <div class="total_sell_rank_list">
+
+                <p class="total_sell_rank_list_r" style="color:{% if list.2 == 1 %}#448026;{% elif list.2 == 2 %}#6CA66C;{% else %}#B8CCC4;{% endif %}">{{ list.2 }}위</p>
+
+                <a href="{% url 'user_list_detail' mb_id=list.0 %}"  style="text-decoration: none;">
+                    <!--    회원ID    -->
+                    <p class="total_sell_rank_list_name">{{ list.0 }}</p>
+                </a>
+                <p class="total_sell_rank_list_count">총액: {{ list.1 }}원</p>
+
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if user_buy_amount_rank_list %}
+        <div class="moreBtn_box">
+            <a href="{% url 'statsCheck_detail' id=3 %}" class="moreBtn">더보기</a>
+        </div>
+        {% else %}
+        <p class="noDataTxt">데이터가 없습니다.</p>
+        {% endif %}
+        <!-- -->
+
+
+        <!---->
+        <!--    회원 재구매율    -->
+        <p class="sell_rank_title">회원 재구매율</p>
+
+        <div class="total_sell_rank">
+            {% for list in user_rebuy_list %}
+            <div class="total_sell_rank_list">
+
+                <!--    회원ID    -->
+                <p class="total_sell_rank_list_name">{{ list.0 }}</p>
+
+                <p class="total_sell_rank_list_count">{{ list.1 }}%</p>
+
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if user_buy_amount_rank_list %}
+        <div class="moreBtn_box">
+            <a href="{% url 'statsCheck_detail' id=6 %}" class="moreBtn">더보기</a>
+        </div>
+        {% else %}
+        <p class="noDataTxt">데이터가 없습니다.</p>
+        {% endif %}
+        <!-- -->
+
+
+        <!----><!----><!---->
+        <div class="titleBox">
+            <a name="sales">매출액 통계</a>
+        </div>
+
+        <!---->
+        <!--    최근 한달 매출액    -->
+        <p class="sell_rank_title">최근 한달 매출액</p>
+
+        <p class="sell_rank_title_sub">{{tmpB}} ~ {{tmpA}}</p>
+
+        <div class="total_sell_rank">
+            {% for list in month_total_amount_mysql %}
+            <div class="total_sell_rank_list">
+
+                <p class="total_sell_rank_list_name">{{ list.1 }}</p>
+
+                <p class="total_sell_rank_list_count">총액: {{ list.0 }}원</p>
+
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if user_buy_amount_rank_list %}
+        <div class="moreBtn_box">
+            <a href="{% url 'statsCheck_detail' id=4 %}" class="moreBtn">더보기</a>
+        </div>
+        {% else %}
+        <p class="noDataTxt">데이터가 없습니다.</p>
+        {% endif %}
+        <!-- -->
+        <!-- -->
+
+
+        <!---->
+        <!--    월별 매출액    -->
+        <p class="sell_rank_title">월별 매출액</p>
+
+        <div class="total_sell_rank">
+            {% for list in month_sales_list %}
+            <div class="total_sell_rank_list">
+
+                <p class="total_sell_rank_list_name">{{ list.0 }}</p>
+
+                <p class="total_sell_rank_list_count">총액: {% if list.1 is not None %}{{ list.1 }}{% else %}0{% endif %}원</p>
+
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if user_buy_amount_rank_list %}
+        <div class="moreBtn_box">
+            <a href="{% url 'statsCheck_detail' id=5 %}" class="moreBtn">더보기</a>
+        </div>
+        {% else %}
+        <p class="noDataTxt">데이터가 없습니다.</p>
+        {% endif %}
+        <!-- -->
+
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+</body>
+</html>

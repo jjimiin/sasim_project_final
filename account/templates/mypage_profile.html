@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 마이페이지 - 내 프로필</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/mypage/profile_style.css' %}" type="text/css"/>
+
+</head>
+
+
+<body>
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+
+
+<!-- -->
+<script>
+
+     function hideRow()  {
+        const row1 = document.getElementById('tel1');
+        row1.style.display = 'none';
+
+        const row2 = document.getElementById('tel2');
+        row2.style.display = 'block';
+
+        const row3 = document.getElementById('modify_tel1');
+        row3.style.display = 'none';
+
+        const row4 = document.getElementById('modify_tel2');
+        row4.style.display = 'block';
+     }
+
+     function showRow()  {
+        const row1 = document.getElementById('tel2');
+        row1.style.display = 'none';
+
+        const row2 = document.getElementById('tel1');
+        row2.style.display = '';
+
+        const row3 = document.getElementById('modify_tel2');
+        row3.style.display = 'none';
+
+        const row4 = document.getElementById('modify_tel1');
+        row4.style.display = '';
+     }
+</script>
+<!-- -->
+
+{% block content %}
+
+    <div class="myPro">
+        <form class="modifyForm" method="POST" action="{% url 'mypage_modify' sort=2 %}">
+            {% csrf_token %}
+
+            <div class="myprofile">
+                <ul class="myinfo">
+                    <li class="photo">
+                        <div>
+                            <img src="{% static 'img/화분.png' %}" width="56" alt="프로필 이미지">
+                        </div>
+                    </li>
+                    <li class="myinfo_text">
+                        <div class="myname">{{ account.2 }}</div>
+                        <div class="myid">{{ account.0 }}</div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <table class="sub_myinfo">
+
+                <tr class="sub_myinfo_con">
+                    <td class="label">Phone</td>
+
+                    <td class="label_con">
+                        <span class="content" id="tel1">{{ account.3 }}</span>
+                    </td>
+                </tr>
+
+
+                <tr class="sub_myinfo_con">
+                    <td class="label">E-Mail</td>
+
+                    <td class="label_con">
+                        <span class="content" id="email1">{{ account.4 }}</span>
+                    </td>
+                </tr>
+
+                <tr class="sub_myinfo_con">
+                    <td class="label">Address</td>
+
+                    <td class="label_con">
+                        <span class="content">({{ account.5 }})</span><br>
+                    </td>
+                </tr>
+
+                <tr class="sub_myinfo_con" id="label_con_id1">
+                    <td class="label"></td>
+
+                    <td class="label_con">
+                        <span class="content">{{ account.6 }}</span><br>
+                    </td>
+                </tr>
+
+                <tr class="sub_myinfo_con" id="label_con_id2">
+                    <td class="label"></td>
+
+                    <td class="label_con">
+                        <span class="content">{{ account.7 }}</span><br>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+
+
+        <div class="modify_c">
+            <a class="modify_c_txt" href="{% url 'mypage_modify' sort=1 %}" onclick="window.open(this.href, '_blank', 'width=450, height=500'); return false;">비밀번호 변경</a>
+            <a class="modify_c_txt2" href="{% url 'check_pw' sort=1 %}">회원정보 수정</a>
+        </div>
+    </div>
+
+{% endblock%}
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+</body>
+</html>

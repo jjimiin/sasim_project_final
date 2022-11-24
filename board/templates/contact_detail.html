@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>키움 | 1:1문의</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap/min.css">
+    <script src="https://max.cdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/board/contact_detail_style.css' %}" type="text/css"/>
+
+</head>
+
+<body>
+{% block head %}
+    {% include "header.html" %}
+{% endblock%}
+
+
+{% block content %}
+
+    <div class="conA">
+
+        <section class="Stitle">
+            <p class="Sone"><b>1:1 문의 | 답변</b></p>
+            <p class="Stwo"><a href="{% url 'home' %}">홈</a> > <a href="{% url 'notice_list' %}">공지</a> > <a href="{% url 'contact_list' %}"><b>1:1 문의</b></a></p>
+        </section>
+
+
+        <!--    게시글     -->
+        <section class="Cpost">
+            <!--    제목    -->
+            <div class="CpostA">
+                <b>Q. {{ n_contact_posts_detail.title }}</b>
+            <!--    고객명    -->
+                <span class="CpostB">작성자: {% if n_contact_posts_detail.mb_id != 'sasim' %}{{ n_contact_posts_detail.mb_id }}{% elif n_contact_posts_detail.mb_id == 'sasim' %}탈퇴한 회원{% endif %}</span>
+            </div>
+
+            <div class="CpostC">
+                <!--    작성자 본인 글일 때 (내용 확인 가능)    -->
+                {% if n_contact_posts_detail.mb_id == userid %}
+                    <!--    내용    -->
+                <p>{{ n_contact_posts_detail.text|linebreaksbr }}</p>
+            </div>
+        </section>
+        <!--  -->
+
+        <section class="Answer">
+            <!--    답변이 달렸을 때 (답변 화면에 띄움)    -->
+            {% if n_contact_posts_detail.reply != '' %}
+                <div class="Canswer">
+                    <div class="Canswer_a">
+                        A. 답변
+                    </div>
+                </div>
+
+                <div class="CpostD">
+                    <!--    답변    -->
+                    <div class="CpostD_a">
+                        {{ n_contact_posts_detail.reply }}
+                    </div>
+                </div>
+
+            {% endif %}
+            <!--  if문 종료  -->
+        </section>
+
+
+        <!--    관리자일 때    -->
+        <section>
+
+            {% elif userid == 'sasim' %}
+            <!--    내용    -->
+                <div class="CpostC">
+                    <p>{{ n_contact_posts_detail.text|linebreaksbr }}</p>
+                </div>
+
+            <!--    답변이 달렸을 때 (답변 화면에 띄움)    -->
+                {% if n_contact_posts_detail.reply != '' %}
+            <!--    답변    -->
+                <div class="Canswer">
+                    <div class="Canswer_a">
+                        A. 답변
+                    </div>
+                </div>
+
+                <div class="CpostD">
+                    <!--    답변    -->
+                    <div class="CpostD_a">
+                        {{ n_contact_posts_detail.reply }}
+                    </div>
+                </div>
+
+
+            <!--    답변이 없을 때 (답변 작성 칸 생성성)    -->
+                {% else %}
+                <span class="Cbutton">
+                    <a href="{% url 'replyContact' pk=n_contact_posts_detail.pk %}">답변하기</a>
+                </span>
+
+                {% endif %}
+            <!--  if문 종료  -->
+
+            <!--    작성자 본인 글이 아닐 때 (내용 확인 불가)    -->
+                {% else %}
+                    <p>작성자만 확인 가능한 글입니다.</p>
+            {% endif %}
+            <!--  if문 종료  -->
+            <!--    -->
+        </section>
+
+
+        <!--   목록 버튼   -->
+        <span class="List_btn">
+            <a href="{% url 'contact_list' %}"><button id="btn">목록</button></a>
+        </span>
+    </div>
+
+
+
+<!-- 풋터 -->
+{% block foot %}
+    {% include "footer.html" %}
+{% endblock%}
+<!---->
+
+{% endblock%}
+</body>
+</html>
